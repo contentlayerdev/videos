@@ -1,6 +1,8 @@
 import { Composition } from "remotion"
 import { ExplainerVideo } from "./compositions/ExplainerVideo"
 
+import "./styles/tailwind.css"
+
 export const RemotionVideo: React.FC = () => {
   return (
     <>
