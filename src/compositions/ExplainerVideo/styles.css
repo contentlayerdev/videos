@@ -1,0 +1,12 @@
+:root {
+  --color-brand: #7c3aed;
+  --color-black: #111827;
+  --color-white: #ffffff;
+}
+
+.video-layout {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  height: 1080px;
+  width: 1920px;
+}
