@@ -3,6 +3,7 @@ import { ExplainerVideo } from "./compositions/ExplainerVideo"
 
 import "./styles/tailwind.css"
 import "./styles/font.css"
+import "./styles/globals.css"
 import "./styles/layout.css"
 
 export const RemotionVideo: React.FC = () => {

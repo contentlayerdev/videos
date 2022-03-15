@@ -1,0 +1,9 @@
+@layer base {
+  svg {
+    width: 100%;
+  }
+
+  svg path {
+    fill: currentColor;
+  }
+}
