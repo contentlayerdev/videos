@@ -1,4 +1,8 @@
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   svg {
     width: 100%;
   }

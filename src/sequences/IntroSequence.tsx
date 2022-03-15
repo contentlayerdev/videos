@@ -1,7 +1,7 @@
 import { interpolate, useVideoConfig, useCurrentFrame } from "remotion"
 import { ContentlayerLogo } from "../assets/ContentlayerLogo"
 
-export const IntroSequence: React.FC<{}> = (props) => {
+export const IntroSequence: React.FC<{}> = () => {
   const frame = useCurrentFrame()
   const { durationInFrames } = useVideoConfig()
   const opacity = interpolate(
