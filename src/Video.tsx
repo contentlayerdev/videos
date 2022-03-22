@@ -1,5 +1,5 @@
 import { Composition } from "remotion"
-import { ExplainerVideo } from "./compositions/ExplainerVideo"
+import { ExplainerVideo } from "./ExplainerVideo"
 
 import "./styles/tailwind.css"
 import "./styles/font.css"
