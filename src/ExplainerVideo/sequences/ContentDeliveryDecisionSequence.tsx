@@ -5,7 +5,7 @@ import * as logos from "../../assets"
 
 type LogoColumn = {
   heading: string
-  logos: React.FC[]
+  logos: Array<React.FC | null>
 }
 
 const data: {
@@ -16,15 +16,15 @@ const data: {
   columns: [
     {
       heading: "Template-Based",
-      logos: [logos.JekyllLogo, logos.HugoLogo],
+      logos: [logos.JekyllLogo, logos.HugoLogo, logos.EleventyLogo],
     },
     {
       heading: "GraphQL",
-      logos: [logos.GatsbyLogo],
+      logos: [null, logos.GatsbyLogo, null],
     },
     {
       heading: "Open Content",
-      logos: [logos.NextLogo, logos.RemixLogo],
+      logos: [logos.NextLogo, logos.RemixLogo, logos.SvelteLogo],
     },
   ],
 }
@@ -56,9 +56,7 @@ export const ContentDeliveryDecisionSequence = () => {
               </h2>
               <div className={`grid grid-cols-1 gap-24`}>
                 {column.logos.map((Logo, idx) => (
-                  <span className="h-20">
-                    <Logo />
-                  </span>
+                  <span className="h-20">{Logo && <Logo />}</span>
                 ))}
               </div>
             </div>
