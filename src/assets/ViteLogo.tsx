@@ -24,8 +24,8 @@ export const ViteLogo: React.FC<{}> = () => {
           y2="44.5708"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#D1D5DB" />
-          <stop offset="1" stop-color="#9CA3AF" />
+          <stop stopColor="#D1D5DB" />
+          <stop offset="1" stopColor="#9CA3AF" />
         </linearGradient>
       </defs>
     </svg>

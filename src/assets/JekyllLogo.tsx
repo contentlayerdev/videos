@@ -181,8 +181,8 @@ export const JekyllLogo: React.FC<{}> = () => {
           y2="30.9317"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#919191" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="#919191" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
       </defs>
     </svg>
