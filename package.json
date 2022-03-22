@@ -4,7 +4,7 @@
   "description": "Contentlayer explainer video(s).",
   "scripts": {
     "start": "remotion preview src/index.tsx",
-    "build": "remotion render src/index.tsx HelloWorld out/video.mp4",
+    "build:explainer": "remotion render src/index.tsx ExplainerVideo out/explainer-video.mp4",
     "upgrade": "remotion upgrade",
     "server": "ts-node server.tsx",
     "test": "eslint src --ext ts,tsx,js,jsx && tsc"
