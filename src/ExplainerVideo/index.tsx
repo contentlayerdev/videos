@@ -16,6 +16,9 @@ import {
   IdealContentDeliverySequence,
   ContentlayerCaseTitleSequence,
   ContentlayerFlowSequence,
+  HowItWorksSequence01,
+  HowItWorksSequence02,
+  HowItWorksSequence03,
 } from "./sequences"
 
 export const ExplainerVideo: React.FC<{}> = () => {
@@ -65,6 +68,15 @@ export const ExplainerVideo: React.FC<{}> = () => {
       </Sequence>
       <Sequence from={190} durationInFrames={10}>
         <ContentlayerFlowSequence />
+      </Sequence>
+      <Sequence from={200} durationInFrames={10}>
+        <HowItWorksSequence01 />
+      </Sequence>
+      <Sequence from={210} durationInFrames={10}>
+        <HowItWorksSequence02 />
+      </Sequence>
+      <Sequence from={220} durationInFrames={10}>
+        <HowItWorksSequence03 />
       </Sequence>
     </div>
   )
