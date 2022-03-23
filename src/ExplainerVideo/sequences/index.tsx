@@ -5,3 +5,4 @@ export { ContentManagementDecisionSequence } from "./ContentManagementDecisionSe
 export { ContentDeliveryDecisionSequence } from "./ContentDeliveryDecisionSequence"
 export { TemplateBasedSequence } from "./TemplateBasedSequence"
 export { GraphQLContentSequence } from "./GraphQLContentSequence"
+export { OpenContentSequence } from "./OpenContentSequence"

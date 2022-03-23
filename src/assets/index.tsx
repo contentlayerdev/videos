@@ -1,3 +1,18 @@
+// Icons
+export { DatabaseIcon } from "./DatabaseIcon"
+export { NegativeIcon } from "./NegativeIcon"
+export { PagesIcon } from "./PagesIcon"
+export { PositiveIcon } from "./PositiveIcon"
+export { QuestionMarkIcon } from "./QuestionMarkIcon"
+
+export type IconName =
+  | "DatabaseIcon"
+  | "NegativeIcon"
+  | "PagesIcon"
+  | "PositiveIcon"
+  | "QuestionMark"
+
+// Logos
 export { AstroLogo } from "./AstroLogo"
 export { ContentfulLogo } from "./ContentfulLogo"
 export { ContentlayerLogo } from "./ContentlayerLogo"
@@ -7,10 +22,8 @@ export { HugoLogo } from "./HugoLogo"
 export { JekyllLogo } from "./JekyllLogo"
 export { MarkdownLogo } from "./MarkdownLogo"
 export { MdxLogo } from "./MdxLogo"
-export { NegativeItem } from "./NegativeItem"
 export { NextLogo } from "./NextLogo"
 export { NotionLogo } from "./NotionLogo"
-export { PositiveItem } from "./PositiveItem"
 export { RemixLogo } from "./RemixLogo"
 export { SanityLogo } from "./SanityLogo"
 export { SvelteLogo } from "./SvelteLogo"

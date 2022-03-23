@@ -49,7 +49,7 @@ export const TemplateBasedSequence = () => {
       </div>
       <div className="py-24 px-64 flex flex-col h-full">
         {data.items.map((item, idx) => {
-          const Icon = item.positive ? logos.PositiveItem : logos.NegativeItem
+          const Icon = item.positive ? logos.PositiveIcon : logos.NegativeIcon
           return (
             <div key={idx} className="inline-flex items-center mb-16">
               <span

@@ -1,31 +1,28 @@
 // import { interpolate, useVideoConfig, useCurrentFrame } from "remotion"
 // import { ContentlayerLogo } from "../../assets/ContentlayerLogo"
-import * as logos from "../../assets"
+import {
+  RemixLogo,
+  NextLogo,
+  SvelteLogo,
+  QuestionMarkIcon,
+  DatabaseIcon,
+  PagesIcon,
+} from "../../assets"
 
 const data: {
   title: string
   logos: React.FC[]
-  items: Array<{
-    text?: string
-    positive?: boolean
-  }>
+  // items: Array<{
+  //   text: string
+  //   positive: boolean
+  // }>
 } = {
-  title: "GraphQL Content System",
-  logos: [logos.GatsbyLogo],
-  items: [
-    { text: "Extensive plugin system", positive: true },
-    { text: "Component frameworks not included", positive: false },
-    { text: "Serves simple use cases", positive: true },
-    { text: "No content validations or data types", positive: false },
-    {},
-    {
-      text: "Complex content relationships are difficult",
-      positive: false,
-    },
-  ],
+  title: "Open Content Model",
+  logos: [RemixLogo, NextLogo, SvelteLogo],
+  // TODO: how to abstract this part?
 }
 
-export const GraphQLContentSequence = () => {
+export const OpenContentSequence = () => {
   // const frame = useCurrentFrame()
   // const { durationInFrames } = useVideoConfig()
 
@@ -42,33 +39,45 @@ export const GraphQLContentSequence = () => {
     <div className="w-full h-full">
       <div className="py-24">
         <div className="flex max-w-2xl mx-auto h-20 items-center justify-between mb-12">
-          <span />
           {data.logos.map((Logo, idx) => (
             <span key={idx} className="block">
               <Logo />
             </span>
           ))}
-          <span />
         </div>
         <h2 className="text-7xl text-center font-bold">{data.title}</h2>
       </div>
-      <div className="grid grid-cols-2 px-12 gap-12">
-        {data.items.map((item, idx) => {
-          if (!item.text) return <span />
+      <div className="py-24 px-24 flex items-center justify-between">
+        <div>
+          <div>Sources</div>
+          <div>
+            <DatabaseIcon />
+          </div>
+        </div>
+        <div>
+          <QuestionMarkIcon />
+        </div>
+        <div>
+          <div>Pages</div>
+          <div>
+            <PagesIcon />
+          </div>
+        </div>
+        {/* {data.items.map((item, idx) => {
           const Icon = item.positive ? logos.PositiveIcon : logos.NegativeIcon
           return (
-            <div key={idx} className="inline-flex items-start">
+            <div key={idx} className="inline-flex items-center mb-16">
               <span
-                className={`block mr-8 mt-2 ${
+                className={`block mr-8 ${
                   item.positive ? "text-green" : "text-red"
                 }`}
               >
                 <Icon />
               </span>
-              <span className="text-5xl leading-normal">{item.text}</span>
+              <span className="text-6xl">{item.text}</span>
             </div>
           )
-        })}
+        })} */}
       </div>
     </div>
   )

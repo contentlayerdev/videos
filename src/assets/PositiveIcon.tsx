@@ -1,4 +1,4 @@
-export const PositiveItem: React.FC<{}> = () => {
+export const PositiveIcon: React.FC<{}> = () => {
   return (
     <svg
       width="73"

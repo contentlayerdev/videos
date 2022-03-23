@@ -8,6 +8,7 @@ import {
   ContentDeliveryDecisionSequence,
   TemplateBasedSequence,
   GraphQLContentSequence,
+  OpenContentSequence,
 } from "./sequences"
 
 export const ExplainerVideo: React.FC<{}> = () => {
@@ -33,6 +34,9 @@ export const ExplainerVideo: React.FC<{}> = () => {
       </Sequence>
       <Sequence from={110} durationInFrames={10}>
         <GraphQLContentSequence />
+      </Sequence>
+      <Sequence from={120} durationInFrames={10}>
+        <OpenContentSequence />
       </Sequence>
     </div>
   )

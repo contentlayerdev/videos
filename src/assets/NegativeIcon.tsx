@@ -1,4 +1,4 @@
-export const NegativeItem: React.FC<{}> = () => {
+export const NegativeIcon: React.FC<{}> = () => {
   return (
     <svg
       width="72"
