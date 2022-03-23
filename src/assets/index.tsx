@@ -45,3 +45,7 @@ export type LogoName =
   | "Sanity"
   | "Svelte"
   | "Vite"
+
+// Arrows
+
+export * as Arrow from "./Arrow"
