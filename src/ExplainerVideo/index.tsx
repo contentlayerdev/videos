@@ -13,6 +13,8 @@ import {
   OpenContentExampleSequence02,
   OpenContentExampleSequence03,
   OpenContentExampleSequence04,
+  IdealContentDeliverySequence,
+  ContentlayerCaseTitleSequence,
 } from "./sequences"
 
 export const ExplainerVideo: React.FC<{}> = () => {
@@ -53,6 +55,12 @@ export const ExplainerVideo: React.FC<{}> = () => {
       </Sequence>
       <Sequence from={160} durationInFrames={10}>
         <OpenContentExampleSequence04 />
+      </Sequence>
+      <Sequence from={170} durationInFrames={10}>
+        <IdealContentDeliverySequence />
+      </Sequence>
+      <Sequence from={180} durationInFrames={10}>
+        <ContentlayerCaseTitleSequence />
       </Sequence>
     </div>
   )
