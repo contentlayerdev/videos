@@ -45,4 +45,4 @@ Config.Bundling.overrideWebpackConfig((currentConfiguration) => {
   }
 })
 
-Config.Preview.setMaxTimelineTracks(20)
+Config.Preview.setMaxTimelineTracks(30)

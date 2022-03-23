@@ -19,6 +19,10 @@ import {
   HowItWorksSequence01,
   HowItWorksSequence02,
   HowItWorksSequence03,
+  PerformanceSequence,
+  UseCaseSequence,
+  FutureSequence,
+  OutroSequence,
 } from "./sequences"
 
 export const ExplainerVideo: React.FC<{}> = () => {
@@ -77,6 +81,18 @@ export const ExplainerVideo: React.FC<{}> = () => {
       </Sequence>
       <Sequence from={220} durationInFrames={10}>
         <HowItWorksSequence03 />
+      </Sequence>
+      <Sequence from={230} durationInFrames={10}>
+        <PerformanceSequence />
+      </Sequence>
+      <Sequence from={240} durationInFrames={10}>
+        <UseCaseSequence />
+      </Sequence>
+      <Sequence from={250} durationInFrames={10}>
+        <FutureSequence />
+      </Sequence>
+      <Sequence from={260} durationInFrames={10}>
+        <OutroSequence />
       </Sequence>
     </div>
   )
