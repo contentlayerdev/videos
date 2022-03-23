@@ -15,6 +15,7 @@ import {
   OpenContentExampleSequence04,
   IdealContentDeliverySequence,
   ContentlayerCaseTitleSequence,
+  ContentlayerFlowSequence,
 } from "./sequences"
 
 export const ExplainerVideo: React.FC<{}> = () => {
@@ -61,6 +62,9 @@ export const ExplainerVideo: React.FC<{}> = () => {
       </Sequence>
       <Sequence from={180} durationInFrames={10}>
         <ContentlayerCaseTitleSequence />
+      </Sequence>
+      <Sequence from={190} durationInFrames={10}>
+        <ContentlayerFlowSequence />
       </Sequence>
     </div>
   )

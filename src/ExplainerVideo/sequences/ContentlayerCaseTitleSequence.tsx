@@ -29,10 +29,10 @@ export const ContentlayerCaseTitleSequence = () => {
           {data.subtitle}
         </h3>
         <div className="inline-flex items-center">
-          <div className="w-24 text-primary mr-6">
+          <div className="h-32 text-primary mr-10">
             <ContentlayerLogo />
           </div>
-          <h2 className="text-8xl font-bold">{data.title}</h2>
+          <h2 className="text-9xl font-bold">{data.title}</h2>
         </div>
       </div>
     </div>
