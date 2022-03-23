@@ -9,7 +9,7 @@ const data: {
   subtitle: "Open Content Example",
 }
 
-export const OpenContentExampleSequence = () => {
+export const OpenContentExampleSequence01 = () => {
   // const frame = useCurrentFrame()
   // const { durationInFrames } = useVideoConfig()
 

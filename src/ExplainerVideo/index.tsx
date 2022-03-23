@@ -9,7 +9,10 @@ import {
   TemplateBasedSequence,
   GraphQLContentSequence,
   OpenContentSequence,
-  OpenContentExampleSequence,
+  OpenContentExampleSequence01,
+  OpenContentExampleSequence02,
+  OpenContentExampleSequence03,
+  OpenContentExampleSequence04,
 } from "./sequences"
 
 export const ExplainerVideo: React.FC<{}> = () => {
@@ -40,7 +43,16 @@ export const ExplainerVideo: React.FC<{}> = () => {
         <OpenContentSequence />
       </Sequence>
       <Sequence from={130} durationInFrames={10}>
-        <OpenContentExampleSequence />
+        <OpenContentExampleSequence01 />
+      </Sequence>
+      <Sequence from={140} durationInFrames={10}>
+        <OpenContentExampleSequence02 />
+      </Sequence>
+      <Sequence from={150} durationInFrames={10}>
+        <OpenContentExampleSequence03 />
+      </Sequence>
+      <Sequence from={160} durationInFrames={10}>
+        <OpenContentExampleSequence04 />
       </Sequence>
     </div>
   )

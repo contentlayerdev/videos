@@ -9,6 +9,7 @@ module.exports = {
       white: "#ffffff",
       green: "#6FCF97",
       red: "#EB5757",
+      highlight: "rgba(242, 201, 76, .5)",
     },
     fontFamily: {
       sans: ["Inter", "sans-serif"],
