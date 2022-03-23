@@ -6,3 +6,4 @@ export { ContentDeliveryDecisionSequence } from "./ContentDeliveryDecisionSequen
 export { TemplateBasedSequence } from "./TemplateBasedSequence"
 export { GraphQLContentSequence } from "./GraphQLContentSequence"
 export { OpenContentSequence } from "./OpenContentSequence"
+export { OpenContentExampleSequence } from "./OpenContentExampleSequence"
