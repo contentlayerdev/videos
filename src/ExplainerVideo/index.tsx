@@ -9,7 +9,7 @@ export const ExplainerVideo: React.FC<{}> = () => {
         const SequenceComponent = sequence.component
         return (
           <Sequence
-            from={sequence.from ?? 0}
+            from={sequence.from!}
             durationInFrames={sequence.durationInFrames}
           >
             <SequenceComponent />
