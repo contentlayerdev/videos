@@ -1,14 +1,20 @@
 import { FC } from "react"
 
 import * as Intro from "./100-Intro"
+import * as IntroAudio from "./100-Intro/audio"
+
 import * as NextMarkdown from "./200-NextMarkdown"
+import * as NextMarkdownAudio from "./200-NextMarkdown/audio"
+
 import * as NextContentlayer from "./300-NextContentlayer"
+import * as NextContentlayerAudio from "./300-NextContentlayer/audio"
 
 /* ----- Type Definitions ----- */
 
 type SequenceConfig = {
-  component: FC
+  component: FC<{}>
   durationInFrames: number
+  audioSrc: string
   from?: number
 }
 
@@ -24,25 +30,86 @@ type VideoConfig = {
 
 const staticSequenceConfig: SequenceConfig[] = [
   // Intro
-  { component: Intro.Intro, durationInFrames: 10 },
-  { component: Intro.ModernWebStack, durationInFrames: 10 },
+  {
+    component: Intro.Intro,
+    durationInFrames: 4 * 30,
+    audioSrc: IntroAudio.Intro,
+  },
+  {
+    component: Intro.ModernWebStack,
+    durationInFrames: 30 * 30,
+    audioSrc: IntroAudio.ModernWebStack,
+  },
   // Next.js + Markdown
-  { component: NextMarkdown.Intro, durationInFrames: 10 },
-  { component: NextMarkdown.ContentFiles, durationInFrames: 10 },
-  { component: NextMarkdown.GenerateRoutes, durationInFrames: 10 },
-  { component: NextMarkdown.ParsingUtility, durationInFrames: 10 },
-  { component: NextMarkdown.Challenges, durationInFrames: 10 },
+  {
+    component: NextMarkdown.Intro,
+    durationInFrames: 7 * 30,
+    audioSrc: NextMarkdownAudio.Intro,
+  },
+  {
+    component: NextMarkdown.ContentFiles,
+    durationInFrames: 14 * 30,
+    audioSrc: NextMarkdownAudio.ContentFiles,
+  },
+  {
+    component: NextMarkdown.GenerateRoutes,
+    durationInFrames: 19 * 30,
+    audioSrc: NextMarkdownAudio.GenerateRoutes,
+  },
+  {
+    component: NextMarkdown.ParsingUtility,
+    durationInFrames: 18 * 30,
+    audioSrc: NextMarkdownAudio.ParsingUtility,
+  },
+  {
+    component: NextMarkdown.Challenges,
+    durationInFrames: 56 * 30,
+    audioSrc: NextMarkdownAudio.Challenges,
+  },
   // Next.js + Contentlayer
-  { component: NextContentlayer.Intro, durationInFrames: 10 },
-  { component: NextContentlayer.ModernStack, durationInFrames: 10 },
-  { component: NextContentlayer.Configuration, durationInFrames: 10 },
-  { component: NextContentlayer.ContentTransformation, durationInFrames: 10 },
-  { component: NextContentlayer.GetStaticPaths, durationInFrames: 10 },
-  { component: NextContentlayer.GetStaticProps, durationInFrames: 10 },
-  { component: NextContentlayer.Benefits, durationInFrames: 10 },
-  { component: NextContentlayer.Outro, durationInFrames: 10 },
+  {
+    component: NextContentlayer.Intro,
+    durationInFrames: 3 * 30,
+    audioSrc: NextContentlayerAudio.Intro,
+  },
+  {
+    component: NextContentlayer.ModernStack,
+    durationInFrames: 10 * 30,
+    audioSrc: NextContentlayerAudio.ModernStack,
+  },
+  {
+    component: NextContentlayer.Configuration,
+    durationInFrames: 32 * 30,
+    audioSrc: NextContentlayerAudio.Configuration,
+  },
+  {
+    component: NextContentlayer.ContentTransformation,
+    durationInFrames: 21 * 30,
+    audioSrc: NextContentlayerAudio.ContentTransformation,
+  },
+  {
+    component: NextContentlayer.GetStaticPaths,
+    durationInFrames: 8 * 30,
+    audioSrc: NextContentlayerAudio.GetStaticPaths,
+  },
+  {
+    component: NextContentlayer.GetStaticProps,
+    durationInFrames: 11 * 30,
+    audioSrc: NextContentlayerAudio.GetStaticProps,
+  },
+  {
+    component: NextContentlayer.Benefits,
+    durationInFrames: 54 * 30,
+    audioSrc: NextContentlayerAudio.Benefits,
+  },
+  {
+    component: NextContentlayer.Outro,
+    durationInFrames: 5 * 30,
+    audioSrc: NextContentlayerAudio.Outro,
+  },
 ]
 
+// Add from prop by finding the total duration passed in previous sequences.
 const sequences = staticSequenceConfig.map((sequence, idx) => {
   sequence.from = staticSequenceConfig
     .slice(0, idx)

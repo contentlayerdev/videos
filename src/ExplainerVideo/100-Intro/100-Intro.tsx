@@ -1,6 +1,6 @@
 import { ContentlayerLogo } from "../../assets"
 
-export const Intro = () => {
+export const Intro: React.FC = () => {
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div className="py-24">
