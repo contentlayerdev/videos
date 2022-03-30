@@ -25,9 +25,6 @@ export const ExplainerVideo: React.FC<{}> = () => {
       <Sequence from={40} durationInFrames={10}>
         <NextMarkdown.GenerateRoutes />
       </Sequence>
-      <Sequence from={50} durationInFrames={10}>
-        <NextMarkdown.InstallDependencies />
-      </Sequence>
       <Sequence from={60} durationInFrames={10}>
         <NextMarkdown.ParsingUtility />
       </Sequence>
