@@ -1,12 +1,4 @@
-import {
-  RemixLogo,
-  NextLogo,
-  SvelteLogo,
-  QuestionMarkIcon,
-  DatabaseIcon,
-  PagesIcon,
-  Arrow,
-} from "../../assets"
+import { QuestionMarkIcon, DatabaseIcon, PagesIcon, Arrow } from "../../assets"
 
 export const ModernWebStack = () => {
   return (
