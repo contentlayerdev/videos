@@ -1,5 +1,6 @@
 import { Composition } from "remotion"
 import { ExplainerVideo } from "./ExplainerVideo"
+import { ExplainerVideo as OldExplainerVideo } from "./ExplainerVideo--v1"
 
 import "./styles/tailwind.css"
 import "./styles/font.css"
@@ -13,6 +14,15 @@ export const RemotionVideo: React.FC = () => {
       <Composition
         id="ExplainerVideo"
         component={ExplainerVideo}
+        durationInFrames={300}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{}}
+      />
+      <Composition
+        id="OldExplainerVideo"
+        component={OldExplainerVideo}
         durationInFrames={300}
         fps={30}
         width={1920}
