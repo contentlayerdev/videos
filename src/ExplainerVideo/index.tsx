@@ -43,15 +43,18 @@ export const ExplainerVideo: React.FC<{}> = () => {
         <NextContentlayer.Configuration />
       </Sequence>
       <Sequence from={120} durationInFrames={10}>
-        <NextContentlayer.GetStaticPaths />
+        <NextContentlayer.ContentTransformation />
       </Sequence>
       <Sequence from={130} durationInFrames={10}>
-        <NextContentlayer.GetStaticProps />
+        <NextContentlayer.GetStaticPaths />
       </Sequence>
       <Sequence from={140} durationInFrames={10}>
-        <NextContentlayer.Benefits />
+        <NextContentlayer.GetStaticProps />
       </Sequence>
       <Sequence from={150} durationInFrames={10}>
+        <NextContentlayer.Benefits />
+      </Sequence>
+      <Sequence from={160} durationInFrames={10}>
         <NextContentlayer.Outro />
       </Sequence>
     </div>
