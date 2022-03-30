@@ -39,9 +39,6 @@ export const ExplainerVideo: React.FC<{}> = () => {
       <Sequence from={90} durationInFrames={10}>
         <NextContentlayer.ModernStack />
       </Sequence>
-      <Sequence from={100} durationInFrames={10}>
-        <NextContentlayer.Installation />
-      </Sequence>
       <Sequence from={110} durationInFrames={10}>
         <NextContentlayer.Configuration />
       </Sequence>
