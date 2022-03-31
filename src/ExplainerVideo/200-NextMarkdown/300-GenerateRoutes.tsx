@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useRef } from "react"
 import { useCurrentFrame, interpolate } from "remotion"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
 
@@ -34,7 +34,13 @@ export const getStaticPaths = async () => {
 };
 `.trim()
 
-const FullCode = ({ startingFrame }: { startingFrame: number }) => {
+const FullCode = ({
+  startingFrame,
+  wrapperRef,
+}: {
+  startingFrame: number
+  wrapperRef: React.RefObject<HTMLDivElement>
+}) => {
   const frame = useCurrentFrame()
   const opacity = interpolate(
     frame,
@@ -42,6 +48,20 @@ const FullCode = ({ startingFrame }: { startingFrame: number }) => {
     [0, 1],
     { extrapolateRight: "clamp" }
   )
+
+  const startY = 0
+  const endY = 48 + 18.62 * 5
+
+  const currentY = interpolate(
+    frame,
+    [startingFrame, startingFrame + 20],
+    [startY, endY],
+    { extrapolateRight: "clamp" }
+  )
+
+  if (wrapperRef.current) {
+    wrapperRef.current.scrollTop = currentY
+  }
 
   return (
     <>
@@ -61,7 +81,10 @@ const FullCode = ({ startingFrame }: { startingFrame: number }) => {
 
 type TimelineItem = {
   frame: number
-  component: FC<{ startingFrame: number }>
+  component: FC<{
+    startingFrame: number
+    wrapperRef: React.RefObject<HTMLDivElement>
+  }>
 }
 
 const timeline: TimelineItem[] = [
@@ -73,6 +96,7 @@ const timeline: TimelineItem[] = [
 
 export const GenerateRoutes = () => {
   const frame = useCurrentFrame()
+  const codeBlock = useRef<HTMLDivElement>(null)
 
   const currentTimelineItem = timeline.find((item, idx) => {
     // Item isn't active yet.
@@ -98,8 +122,12 @@ export const GenerateRoutes = () => {
         <div
           className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12 overflow-y-scroll"
           style={{ height: "42rem" }}
+          ref={codeBlock}
         >
-          <CodeComponent startingFrame={currentTimelineItem.frame} />
+          <CodeComponent
+            startingFrame={currentTimelineItem.frame}
+            wrapperRef={codeBlock}
+          />
         </div>
       </div>
     </div>
