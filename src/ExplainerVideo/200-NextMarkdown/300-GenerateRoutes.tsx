@@ -1,16 +1,26 @@
-import { useState } from "react"
-import { useCurrentFrame, useVideoConfig } from "remotion"
+import { FC } from "react"
+import { useCurrentFrame, interpolate } from "remotion"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
 
-const dependencies = `
+/* ----- Dependencies ----- */
+
+const dependenciesSnippet = `
 import fs from "fs";
 import glob from "glob";
 import path from "path";
 `.trim()
 
-const fullCode = `
-${dependencies}
+const DependencyCode = () => {
+  return (
+    <SyntaxHighlighter language="javascript">
+      {dependenciesSnippet}
+    </SyntaxHighlighter>
+  )
+}
 
+/* ----- Full Code ----- */
+
+const fullCodeSnippet = `
 export const getStaticPaths = async () => {
   const postsDir = path.join(process.cwd(), "../posts");
   const allPostPaths = glob.sync(path.join(postsDir, "**/*.md"));
@@ -24,26 +34,45 @@ export const getStaticPaths = async () => {
 };
 `.trim()
 
+const FullCode = ({ startingFrame }: { startingFrame: number }) => {
+  const frame = useCurrentFrame()
+  const opacity = interpolate(
+    frame,
+    [startingFrame, startingFrame + 20],
+    [0, 1],
+    { extrapolateRight: "clamp" }
+  )
+
+  return (
+    <>
+      <SyntaxHighlighter language="javascript">
+        {dependenciesSnippet}
+      </SyntaxHighlighter>
+      <span className="block" style={{ opacity }}>
+        <SyntaxHighlighter highlightLines={[5, 6]} language="javascript">
+          {fullCodeSnippet}
+        </SyntaxHighlighter>
+      </span>
+    </>
+  )
+}
+
+/* ----- Timeline Definition ----- */
+
 type TimelineItem = {
   frame: number
-  code: string
-  highlightLines?: number[]
+  component: FC<{ startingFrame: number }>
 }
 
 const timeline: TimelineItem[] = [
-  { frame: 0, code: dependencies },
-  { frame: 100, code: fullCode, highlightLines: [5, 6] },
+  { frame: 0, component: DependencyCode },
+  { frame: 100, component: FullCode },
 ]
+
+/* ----- Sequence Component ----- */
 
 export const GenerateRoutes = () => {
   const frame = useCurrentFrame()
-  // const { durationInFrames } = useVideoConfig()
-  // console.log(durationInFrames)
-
-  // const keyFrames = timeline.map((item) => {
-  //   return frame === item.frame
-  // })
-  // console.log(keyFrames)
 
   const currentTimelineItem = timeline.find((item, idx) => {
     // Item isn't active yet.
@@ -53,8 +82,7 @@ export const GenerateRoutes = () => {
     // If an item that isn't the last item is active.
     if (frame >= item.frame && frame < timeline[idx + 1].frame) return true
   })!
-
-  // console.log(currentTimelineItem)
+  const CodeComponent = currentTimelineItem.component
 
   return (
     <div className="w-full h-full">
@@ -71,12 +99,7 @@ export const GenerateRoutes = () => {
           className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12 overflow-y-scroll"
           style={{ height: "42rem" }}
         >
-          <SyntaxHighlighter
-            highlightLines={currentTimelineItem.highlightLines ?? []}
-            language="javascript"
-          >
-            {currentTimelineItem.code}
-          </SyntaxHighlighter>
+          <CodeComponent startingFrame={currentTimelineItem.frame} />
         </div>
       </div>
     </div>
