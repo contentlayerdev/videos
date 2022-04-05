@@ -1,20 +1,6 @@
-import { interpolate, useCurrentFrame } from "remotion"
+import { interpolate } from "remotion"
 
-import {
-  ContentIcon,
-  QuestionMarkIcon,
-  DatabaseIcon,
-  PagesIcon,
-  NextLogo,
-  RemixLogo,
-  SvelteLogo,
-  AstroLogo,
-  Arrow,
-  MarkdownLogo,
-  ContentfulLogo,
-  ReactLogo,
-  VueLogo,
-} from "../../assets"
+import { Arrow, Logo, Icon } from "../../assets"
 import { useTimeline } from "../../hooks/useTimeline"
 
 import type { SequenceComponent } from "../../types"
@@ -44,27 +30,6 @@ type SequenceBodyProps = TimelineComponentProps & {
 
 /* ----- Shared Components ----- */
 
-// Not being used, but I liked the design, so I'm keeping it around temporarily.
-// const ContentToPages = () => {
-//   return (
-//     <div className="mx-auto max-w-lg flex items-center justify-around mb-12">
-//       <div className="bg-gray flex items-center justify-between p-8 rounded-2xl">
-//         <span className="h-6 block opacity-75">
-//           <ContentIcon />
-//         </span>
-//       </div>
-//       <div className="w-48 opacity-50">
-//         <Arrow.RightArrow />
-//       </div>
-//       <div className="bg-gray flex items-center justify-between p-8 rounded-2xl">
-//         <span className="h-6 block opacity-75">
-//           <PagesIcon />
-//         </span>
-//       </div>
-//     </div>
-//   )
-// }
-
 export const MetaLogos: React.FC<MetaLogosProps> = (props) => {
   const getOpacity = (name: string): number => {
     const defaultOpacity = 0.75
@@ -87,16 +52,16 @@ export const MetaLogos: React.FC<MetaLogosProps> = (props) => {
   return (
     <div className="mx-auto max-w-lg flex items-center justify-around mb-12">
       <div style={{ opacity: getOpacity("next") }}>
-        <NextLogo />
+        <Logo.NextLogo />
       </div>
       <div style={{ opacity: getOpacity("remix") }}>
-        <RemixLogo />
+        <Logo.RemixLogo />
       </div>
       <div style={{ opacity: getOpacity("svelte") }}>
-        <SvelteLogo />
+        <Logo.SvelteLogo />
       </div>
       <div style={{ opacity: getOpacity("astro") }}>
-        <AstroLogo />
+        <Logo.AstroLogo />
       </div>
     </div>
   )
@@ -107,10 +72,10 @@ const ContentSources = () => {
     <div className="border-2 rounded-lg p-12 border-lightGray">
       <div className="flex items-center justify-between mb-8">
         <div className="h-20 mx-6">
-          <MarkdownLogo />{" "}
+          <Logo.MarkdownLogo />{" "}
         </div>
         <div className="h-20 mx-6">
-          <ContentfulLogo />
+          <Logo.ContentfulLogo />
         </div>
       </div>
       <h3 className="text-4xl text-center leading-normal">
@@ -127,10 +92,10 @@ const PageTemplates = () => {
     <div className="border-2 rounded-lg p-12 border-lightGray">
       <div className="flex items-center justify-between mb-8">
         <div className="h-20 mx-6">
-          <ReactLogo />
+          <Logo.ReactLogo />
         </div>
         <div className="h-16 mx-6">
-          <VueLogo />
+          <Logo.VueLogo />
         </div>
       </div>
       <h3 className="text-4xl text-center leading-normal">
@@ -194,7 +159,7 @@ const SequenceBody: React.FC<SequenceBodyProps> = (props) => {
         <Arrow.RightArrow />
       </div>
       <div className="w-36" style={{ opacity: getQuestionMarkOpacity() }}>
-        <QuestionMarkIcon />
+        <Icon.QuestionMarkIcon />
       </div>
       <div className="w-56" style={{ opacity: getArrowOpacity() }}>
         <Arrow.RightArrow />

@@ -1,6 +1,6 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion"
-import { ContentlayerLogo } from "../../assets"
-import type { SequenceComponent } from "../config"
+import { Logo } from "../../assets"
+import type { SequenceComponent } from "../../types"
 
 export const Sequence: SequenceComponent = () => {
   const frame = useCurrentFrame()
@@ -19,7 +19,7 @@ export const Sequence: SequenceComponent = () => {
       <div className="py-24">
         <div className="inline-flex items-center" style={{ opacity }}>
           <div className="h-32 text-primary mr-10">
-            <ContentlayerLogo />
+            <Logo.ContentlayerLogo />
           </div>
           <h2 className="text-9xl font-bold">Contentlayer</h2>
         </div>
