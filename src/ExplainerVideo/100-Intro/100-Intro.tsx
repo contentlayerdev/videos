@@ -1,18 +1,9 @@
-import { interpolate, useCurrentFrame, useVideoConfig } from "remotion"
+import { useSequenceFade } from "../../hooks"
 import { Logo } from "../../assets"
 import type { SequenceComponent } from "../../types"
 
 export const Sequence: SequenceComponent = () => {
-  const frame = useCurrentFrame()
-  const { durationInFrames, fps } = useVideoConfig()
-
-  const fadeOutFrames = fps / 2 // 0.5 sec
-  const opacity = interpolate(
-    frame,
-    [durationInFrames - fadeOutFrames, durationInFrames],
-    [1, 0],
-    { extrapolateRight: "clamp" }
-  )
+  const opacity = useSequenceFade("out")
 
   return (
     <div className="w-full h-full flex items-center justify-center">

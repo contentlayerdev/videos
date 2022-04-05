@@ -1,6 +1,14 @@
 import { useCurrentFrame, useVideoConfig } from "remotion"
 import type { TimelineItem, CurrentTimelineItem } from "../types"
 
+/**
+ * Given a timeline configuration for a particular sequence, find the current
+ * timeline item.
+ *
+ * @param timeline Array of timeline items from config file.
+ * @returns Current timeline item, along with useful values from
+ * useVideoConfig()
+ */
 export function useTimeline(timeline: TimelineItem[]): CurrentTimelineItem {
   const frame = useCurrentFrame()
   const { fps, durationInFrames } = useVideoConfig()
