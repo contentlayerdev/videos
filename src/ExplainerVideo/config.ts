@@ -66,11 +66,11 @@ const staticSequenceConfig: SequenceConfig[] = [
     ],
   },
   // Next.js + Markdown
-  // {
-  //   component: NextMarkdown.Intro,
-  //   durationInFrames: 7 * 30,
-  //   audioSrc: NextMarkdownAudio.Intro,
-  // },
+  {
+    component: NextMarkdown.Intro,
+    durationInFrames: 7 * 30,
+    audioSrc: NextMarkdownAudio.Intro,
+  },
   // {
   //   component: NextMarkdown.ContentFiles,
   //   durationInFrames: 14 * 30,
