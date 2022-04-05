@@ -1,7 +1,8 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion"
 import { ContentlayerLogo } from "../../assets"
+import type { SequenceComponent } from "../config"
 
-export const Intro: React.FC = () => {
+export const Sequence: SequenceComponent = () => {
   const frame = useCurrentFrame()
   const { durationInFrames, fps } = useVideoConfig()
 

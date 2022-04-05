@@ -13,7 +13,7 @@ export const ExplainerVideo: React.FC<{}> = () => {
             durationInFrames={sequence.durationInFrames}
             key={idx}
           >
-            <SequenceComponent />
+            <SequenceComponent timeline={sequence.timeline ?? []} />
             <Audio src={sequence.audioSrc} />
           </Sequence>
         )
