@@ -1,7 +1,7 @@
 import { interpolate } from "remotion"
 
 import { Arrow, Logo, Icon } from "../../assets"
-import { useTimeline } from "../../hooks/useTimeline"
+import { useTimeline, useSequenceFade } from "../../hooks"
 
 import type { SequenceComponent } from "../../types"
 
@@ -140,7 +140,7 @@ const SequenceBody: React.FC<SequenceBodyProps> = (props) => {
         props.lastFrame - props.fps / 4,
         props.lastFrame,
       ],
-      [defaultOpacity, maxOpacity, maxOpacity, defaultOpacity],
+      [0, maxOpacity, maxOpacity, defaultOpacity],
       { extrapolateRight: "clamp" }
     )
   }
@@ -171,26 +171,12 @@ const SequenceBody: React.FC<SequenceBodyProps> = (props) => {
   )
 }
 
-const SequenceWrapper: React.FC<{
-  currentFrame: number
-  durationInFrames: number
-  fps: number
-}> = (props) => {
-  const opacity = interpolate(
-    props.currentFrame,
-    [
-      0,
-      props.fps / 4,
-      props.durationInFrames - props.fps / 4,
-      props.durationInFrames,
-    ],
-    [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
-  )
+const SequenceWrapper: React.FC = ({ children }) => {
+  const opacity = useSequenceFade()
 
   return (
     <div className="w-full h-full" style={{ opacity }}>
-      {props.children}
+      {children}
     </div>
   )
 }
@@ -288,21 +274,11 @@ export const Timeline = {
 /* ----- Sequence Control ----- */
 
 export const Sequence: SequenceComponent = ({ timeline }) => {
-  const {
-    Component,
-    startingFrame,
-    currentFrame,
-    lastFrame,
-    fps,
-    durationInFrames,
-  } = useTimeline(timeline)
+  const { Component, startingFrame, currentFrame, lastFrame, fps } =
+    useTimeline(timeline)
 
   return (
-    <SequenceWrapper
-      currentFrame={currentFrame}
-      durationInFrames={durationInFrames}
-      fps={fps}
-    >
+    <SequenceWrapper>
       <Component
         startingFrame={startingFrame}
         currentFrame={currentFrame}
