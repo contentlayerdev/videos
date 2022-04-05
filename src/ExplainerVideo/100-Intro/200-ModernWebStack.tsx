@@ -171,16 +171,6 @@ const SequenceBody: React.FC<SequenceBodyProps> = (props) => {
   )
 }
 
-const SequenceWrapper: React.FC = ({ children }) => {
-  const opacity = useSequenceFade()
-
-  return (
-    <div className="w-full h-full" style={{ opacity }}>
-      {children}
-    </div>
-  )
-}
-
 /* ----- Timeline Components ----- */
 
 const Base: TimelineComponent = (props) => {
@@ -277,14 +267,16 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
+  const opacity = useSequenceFade()
+
   return (
-    <SequenceWrapper>
+    <div className="w-full h-full" style={{ opacity }}>
       <Component
         startingFrame={startingFrame}
         currentFrame={currentFrame}
         lastFrame={lastFrame}
         fps={fps}
       />
-    </SequenceWrapper>
+    </div>
   )
 }

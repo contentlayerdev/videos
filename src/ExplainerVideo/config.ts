@@ -67,15 +67,37 @@ const staticSequenceConfig: SequenceConfig[] = [
   },
   // Next.js + Markdown
   {
-    component: NextMarkdown.Intro,
+    component: NextMarkdown.Intro.Sequence,
     durationInFrames: 7 * 30,
     audioSrc: NextMarkdownAudio.Intro,
   },
-  // {
-  //   component: NextMarkdown.ContentFiles,
-  //   durationInFrames: 14 * 30,
-  //   audioSrc: NextMarkdownAudio.ContentFiles,
-  // },
+  {
+    component: NextMarkdown.ContentFiles.Sequence,
+    durationInFrames: 14 * 30,
+    audioSrc: NextMarkdownAudio.ContentFiles,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextMarkdown.ContentFiles.Timeline.EmptyFileTree,
+      },
+      {
+        frame: 2 * 30,
+        component: NextMarkdown.ContentFiles.Timeline.FileTreeWithFiles,
+      },
+      {
+        frame: 4 * 30,
+        component: NextMarkdown.ContentFiles.Timeline.SlideFileTree,
+      },
+      {
+        frame: 6 * 30,
+        component: NextMarkdown.ContentFiles.Timeline.AddPostFrontmatter,
+      },
+      {
+        frame: 8 * 30,
+        component: NextMarkdown.ContentFiles.Timeline.AddPostBody,
+      },
+    ],
+  },
   // {
   //   component: NextMarkdown.GenerateRoutes,
   //   durationInFrames: 19 * 30,

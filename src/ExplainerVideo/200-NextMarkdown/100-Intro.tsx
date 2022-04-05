@@ -1,7 +1,8 @@
-import { Logo } from "../../assets"
+import type { SequenceComponent } from "../../types"
 import { useSequenceFade } from "../../hooks"
+import { NextPlusMarkdown } from "./components/NextPlusMarkdown"
 
-export const Intro = () => {
+export const Sequence: SequenceComponent = () => {
   const opacity = useSequenceFade()
 
   return (
@@ -10,15 +11,9 @@ export const Intro = () => {
       style={{ opacity }}
     >
       <div className="py-24">
-        <div className="flex items-center justify-center mb-16">
-          <span className="block opacity-75">
-            <Logo.NextLogo />
-          </span>
-          <span className="block mx-6 text-6xl opacity-50">+</span>
-          <span className="block opacity-75">
-            <Logo.MarkdownLogo />
-          </span>
-        </div>
+        <span className="block mb-16">
+          <NextPlusMarkdown />
+        </span>
         <h3 className="text-4xl font-thin text-center mb-10">
           Modern Content Example
         </h3>

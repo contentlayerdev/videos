@@ -1,36 +1,150 @@
+import { interpolate } from "remotion"
+import type { SequenceComponent } from "../../types"
+import { useTimeline, useSequenceFade } from "../../hooks"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
+import { NextPlusMarkdown } from "./components/NextPlusMarkdown"
 
-const contentTree = `
+/* ----- Types ----- */
+
+type TimelineComponentProps = {
+  startingFrame: number
+  currentFrame: number
+  lastFrame: number
+  fps: number
+}
+
+type TimelineComponent = React.FC<TimelineComponentProps>
+
+/* ----- Code Snippets ----- */
+
+const contentTreeSnippet = `
 posts/
 ├── introducing-contentlayer.md
 ├── what-is-contentlayer.md
 └── why-contentlayer.md
 `.trim()
 
-const postPreview = `
+const postFrontmatterSnippet = `
 ---
 title: What is Contentlayer?
 date: 2022-02-22
 ---
+`.trim()
 
+const postBodySnippet = `
 **Contentlayer makes working with content easy.** It is a content preprocessor that validates and transforms your content into type-safe JSON you can easily import into your application.
 `.trim()
 
-export const ContentFiles = () => {
+/* ----- Shared Components ----- */
+
+/* ----- Timeline Components ----- */
+
+const contentWrapperClasses = "flex items-center justify-center"
+const codeSnippetWrapperClasses =
+  "p-12 rounded-xl bg-gray text-3xl leading-normal shadow-lg"
+
+const EmptyFileTree: TimelineComponent = () => {
   return (
-    <div className="w-full h-full">
-      <div className="py-24">
-        <h2 className="text-7xl text-center font-bold">Content Source Files</h2>
-      </div>
-      <div className="py-36 px-48 flex items-start justify-between relative">
-        <div className="p-12 rounded-xl bg-gray text-3xl leading-normal">
-          <SyntaxHighlighter language="text" highlightLines={[4]}>
-            {contentTree}
+    <div className={contentWrapperClasses}>
+      <div className={codeSnippetWrapperClasses}>
+        <div className="opacity-0">
+          <SyntaxHighlighter language="text">
+            {contentTreeSnippet}
           </SyntaxHighlighter>
         </div>
-        <div className="p-12 rounded-xl bg-gray text-3xl leading-normal">
-          <SyntaxHighlighter language="yaml">{postPreview}</SyntaxHighlighter>
+      </div>
+    </div>
+  )
+}
+
+const FileTreeWithFiles: TimelineComponent = (props) => {
+  const opacity = interpolate(
+    props.currentFrame,
+    [props.startingFrame, props.startingFrame + props.fps / 2],
+    [0, 1],
+    { extrapolateRight: "clamp" }
+  )
+  return (
+    <div className={contentWrapperClasses}>
+      <div className={codeSnippetWrapperClasses}>
+        <div style={{ opacity }}>
+          <SyntaxHighlighter language="text">
+            {contentTreeSnippet}
+          </SyntaxHighlighter>
         </div>
+      </div>
+    </div>
+  )
+}
+
+const SlideFileTree: TimelineComponent = (props) => {
+  return <p>SLIDE ME!</p>
+}
+
+const AddPostFrontmatter: TimelineComponent = (props) => {
+  return (
+    <div
+      className="grid grid-cols-2 gap-8"
+      style={{ gridTemplateColumns: "auto minmax(0, 1fr)" }}
+    >
+      <div>
+        <div
+          className={codeSnippetWrapperClasses.replace("text-3xl", "text-2xl")}
+        >
+          <SyntaxHighlighter language="text" highlightLines={[4]}>
+            {contentTreeSnippet}
+          </SyntaxHighlighter>
+        </div>
+      </div>
+      <div className={codeSnippetWrapperClasses}>
+        <SyntaxHighlighter language="yaml">
+          {postFrontmatterSnippet}
+        </SyntaxHighlighter>
+        <span className="block opacity-0">
+          <SyntaxHighlighter language="markdown">
+            {postBodySnippet}
+          </SyntaxHighlighter>
+        </span>
+      </div>
+    </div>
+  )
+}
+
+const AddPostBody: TimelineComponent = (props) => {
+  return <p>Add post body</p>
+}
+
+export const Timeline = {
+  EmptyFileTree,
+  FileTreeWithFiles,
+  SlideFileTree,
+  AddPostFrontmatter,
+  AddPostBody,
+}
+
+/* ----- Sequence Control ----- */
+
+export const Sequence: SequenceComponent = ({ timeline }) => {
+  const { Component, startingFrame, currentFrame, lastFrame, fps } =
+    useTimeline(timeline)
+
+  const opacity = useSequenceFade()
+
+  return (
+    <div className="w-full h-full relative" style={{ opacity }}>
+      <div className="pt-12 pb-24">
+        <span className="block mb-10">
+          <NextPlusMarkdown />
+        </span>
+        <h2 className="text-7xl text-center font-bold">Content Source Files</h2>
+      </div>
+      <div className="py-24 px-24 relative">
+        <Component
+          startingFrame={startingFrame}
+          currentFrame={currentFrame}
+          lastFrame={lastFrame}
+          fps={fps}
+        />
       </div>
     </div>
   )
