@@ -43,6 +43,22 @@ const staticSequenceConfig: SequenceConfig[] = [
         frame: 4 * 30,
         component: Intro.ModernWebStack.Timeline.HighlightAstro,
       },
+      {
+        frame: 5 * 30,
+        component: Intro.ModernWebStack.Timeline.ShowPages,
+      },
+      {
+        frame: 7 * 30,
+        component: Intro.ModernWebStack.Timeline.ShowContent,
+      },
+      {
+        frame: 9 * 30,
+        component: Intro.ModernWebStack.Timeline.ShowProcessor,
+      },
+      {
+        frame: 11 * 30,
+        component: Intro.ModernWebStack.Timeline.ShowEverything,
+      },
     ],
   },
   // Next.js + Markdown

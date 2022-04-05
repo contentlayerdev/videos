@@ -34,6 +34,14 @@ type MetaLogosProps = TimelineComponentProps & {
   activeLogo?: "next" | "remix" | "svelte" | "astro"
 }
 
+type SequenceBodyState = "active" | "hidden" | "visible"
+
+type SequenceBodyProps = TimelineComponentProps & {
+  content: SequenceBodyState
+  pages: SequenceBodyState
+  processor: SequenceBodyState
+}
+
 /* ----- Shared Components ----- */
 
 // Not being used, but I liked the design, so I'm keeping it around temporarily.
@@ -57,9 +65,10 @@ type MetaLogosProps = TimelineComponentProps & {
 //   )
 // }
 
-const MetaLogos: React.FC<MetaLogosProps> = (props) => {
+export const MetaLogos: React.FC<MetaLogosProps> = (props) => {
   const getOpacity = (name: string): number => {
-    if (props.activeLogo !== name) return 0.5
+    const defaultOpacity = 0.75
+    if (props.activeLogo !== name) return defaultOpacity
     // Equates to a 0.25s fade in and fade out. Quick because the audio is
     // quick.
     return interpolate(
@@ -70,7 +79,7 @@ const MetaLogos: React.FC<MetaLogosProps> = (props) => {
         props.lastFrame - props.fps / 4,
         props.lastFrame,
       ],
-      [0.5, 1, 1, 0.5],
+      [defaultOpacity, 1, 1, defaultOpacity],
       { extrapolateRight: "clamp" }
     )
   }
@@ -149,22 +158,48 @@ const SequenceHeader: React.FC<MetaLogosProps> = (props) => {
   )
 }
 
-const SequenceBody: React.FC = () => {
+const SequenceBody: React.FC<SequenceBodyProps> = (props) => {
+  const getOpacity = (
+    state: SequenceBodyState,
+    defaultOpacity: number,
+    maxOpacity: number
+  ): number => {
+    if (state === "hidden") return 0
+    if (state === "visible") return defaultOpacity
+    // Equates to a 0.25s fade in and fade out.
+    return interpolate(
+      props.currentFrame,
+      [
+        props.startingFrame,
+        props.startingFrame + props.fps / 4,
+        props.lastFrame - props.fps / 4,
+        props.lastFrame,
+      ],
+      [defaultOpacity, maxOpacity, maxOpacity, defaultOpacity],
+      { extrapolateRight: "clamp" }
+    )
+  }
+
+  const getContentOpacity = () => getOpacity(props.content, 0.75, 1)
+  const getArrowOpacity = () => getOpacity(props.processor, 0.5, 0.75)
+  const getQuestionMarkOpacity = () => getOpacity(props.processor, 0.75, 1)
+  const getPagesOpacity = () => getOpacity(props.pages, 0.75, 1)
+
   return (
-    <div className="py-32 px-24 flex items-center justify-between relative">
-      <div>
+    <div className="py-32 px-36 flex items-center justify-between relative">
+      <div style={{ opacity: getContentOpacity() }}>
         <ContentSources />
       </div>
-      <div className="opacity-50 w-56">
+      <div className="w-56" style={{ opacity: getArrowOpacity() }}>
         <Arrow.RightArrow />
       </div>
-      <div className="w-36">
+      <div className="w-36" style={{ opacity: getQuestionMarkOpacity() }}>
         <QuestionMarkIcon />
       </div>
-      <div className="opacity-50 w-56">
+      <div className="w-56" style={{ opacity: getArrowOpacity() }}>
         <Arrow.RightArrow />
       </div>
-      <div>
+      <div style={{ opacity: getPagesOpacity() }}>
         <PageTemplates />
       </div>
     </div>
@@ -197,12 +232,72 @@ const HighlightAstro: TimelineComponent = (props) => {
   return <SequenceHeader {...props} activeLogo={"astro"} />
 }
 
+const ShowPages: TimelineComponent = (props) => {
+  return (
+    <>
+      <SequenceHeader {...props} />
+      <SequenceBody
+        {...props}
+        content={"hidden"}
+        pages={"active"}
+        processor={"hidden"}
+      />
+    </>
+  )
+}
+
+const ShowContent: TimelineComponent = (props) => {
+  return (
+    <>
+      <SequenceHeader {...props} />
+      <SequenceBody
+        {...props}
+        content={"active"}
+        pages={"visible"}
+        processor={"hidden"}
+      />
+    </>
+  )
+}
+
+const ShowProcessor: TimelineComponent = (props) => {
+  return (
+    <>
+      <SequenceHeader {...props} />
+      <SequenceBody
+        {...props}
+        content={"visible"}
+        pages={"visible"}
+        processor={"active"}
+      />
+    </>
+  )
+}
+
+const ShowEverything: TimelineComponent = (props) => {
+  return (
+    <>
+      <SequenceHeader {...props} />
+      <SequenceBody
+        {...props}
+        content={"visible"}
+        pages={"visible"}
+        processor={"visible"}
+      />
+    </>
+  )
+}
+
 export const Timeline = {
   Base,
   HighlightNext,
   HighlightRemix,
   HighlightSvelte,
   HighlightAstro,
+  ShowPages,
+  ShowContent,
+  ShowProcessor,
+  ShowEverything,
 }
 
 /* ----- Sequence Control ----- */
