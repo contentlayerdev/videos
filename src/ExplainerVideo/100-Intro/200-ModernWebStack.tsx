@@ -1,65 +1,126 @@
-import { QuestionMarkIcon, DatabaseIcon, PagesIcon, Arrow } from "../../assets"
+import {
+  ContentIcon,
+  QuestionMarkIcon,
+  DatabaseIcon,
+  PagesIcon,
+  NextLogo,
+  RemixLogo,
+  SvelteLogo,
+  AstroLogo,
+  Arrow,
+  MarkdownLogo,
+  ContentfulLogo,
+  ReactLogo,
+  VueLogo,
+} from "../../assets"
+
+const ContentToPages = () => {
+  return (
+    <div className="mx-auto max-w-lg flex items-center justify-around mb-12">
+      <div className="bg-gray flex items-center justify-between p-8 rounded-2xl">
+        <span className="h-6 block opacity-75">
+          <ContentIcon />
+        </span>
+      </div>
+      <div className="w-48 opacity-50">
+        <Arrow.RightArrow />
+      </div>
+      <div className="bg-gray flex items-center justify-between p-8 rounded-2xl">
+        <span className="h-6 block opacity-75">
+          <PagesIcon />
+        </span>
+      </div>
+    </div>
+  )
+}
+
+const MetaLogos = () => {
+  return (
+    <div className="mx-auto max-w-lg flex items-center justify-around mb-12">
+      <div className="opacity-50">
+        <NextLogo />
+      </div>
+      <div className="opacity-50">
+        <RemixLogo />
+      </div>
+      <div className="opacity-50">
+        <SvelteLogo />
+      </div>
+      <div className="opacity-50">
+        <AstroLogo />
+      </div>
+    </div>
+  )
+}
+
+const ContentSources = () => {
+  return (
+    <div className="border-2 rounded-lg p-12 border-lightGray">
+      <div className="flex items-center justify-between mb-8">
+        <div className="h-20 mx-6">
+          <MarkdownLogo />{" "}
+        </div>
+        <div className="h-20 mx-6">
+          <ContentfulLogo />
+        </div>
+      </div>
+      <h3 className="text-4xl text-center leading-normal">
+        Local/Remote
+        <br />
+        Content
+      </h3>
+    </div>
+  )
+}
+
+const PageTemplates = () => {
+  return (
+    <div className="border-2 rounded-lg p-12 border-lightGray">
+      <div className="flex items-center justify-between mb-8">
+        <div className="h-20 mx-6">
+          <ReactLogo />{" "}
+        </div>
+        <div className="h-16 mx-6">
+          <VueLogo />
+        </div>
+      </div>
+      <h3 className="text-4xl text-center leading-normal">
+        Component
+        <br />
+        Templates
+      </h3>
+    </div>
+  )
+}
 
 export const ModernWebStack = () => {
   return (
     <div className="w-full h-full">
-      <div className="py-24">
-        <h2 className="text-7xl text-center font-bold">Modern Web Stack</h2>
+      <div className="pt-12 pb-24">
+        {/* <ContentToPages /> */}
+        <MetaLogos />
+        <h2 className="text-7xl text-center font-bold mb-10">
+          Modern Meta Frameworks
+        </h2>
+        <h3 className="text-5xl font-thin text-center">
+          Content as Data, Unprescribed.
+        </h3>
       </div>
       <div className="py-32 px-24 flex items-center justify-between relative">
-        <div className="relative">
-          <div
-            className="text-4xl uppercase py-6 px-12 border transform -rotate-12 absolute rounded-xl"
-            style={{ top: "-5rem", left: "-2rem" }}
-          >
-            Sources
-          </div>
-          <div className="bg-gray flex items-center justify-between py-16 px-32 rounded-2xl">
-            <span className="h-32 block">
-              <DatabaseIcon />
-            </span>
-          </div>
+        <div>
+          <ContentSources />
+        </div>
+        <div className="opacity-50 w-56">
+          <Arrow.RightArrow />
+        </div>
+        <div className="w-36">
+          <QuestionMarkIcon />
+        </div>
+        <div className="opacity-50 w-56">
+          <Arrow.RightArrow />
         </div>
         <div>
-          <span
-            className="block absolute text-gray transform"
-            style={{
-              left: "24rem",
-              top: "-2rem",
-              width: "30rem",
-              transform: "rotate(-8deg)",
-            }}
-          >
-            <Arrow.RightDownArrow />
-          </span>
-
-          <span className="block h-56">
-            <QuestionMarkIcon />
-          </span>
-          <span
-            className="block absolute text-gray transform"
-            style={{
-              left: "60rem",
-              bottom: "3rem",
-              width: "28rem",
-              transform: "rotate(-10deg)",
-            }}
-          >
-            <Arrow.RightLoopArrow />
-          </span>
-        </div>
-        <div className="relative">
-          <div
-            className="text-4xl uppercase py-6 px-12 border transform rotate-12 absolute rounded-xl"
-            style={{ top: "-5rem", right: "-2rem" }}
-          >
-            Pages
-          </div>
-          <div className="bg-gray flex items-center justify-between py-16 px-32 rounded-2xl">
-            <span className="h-32 block">
-              <PagesIcon />
-            </span>
-          </div>
+          <PageTemplates />
         </div>
       </div>
     </div>

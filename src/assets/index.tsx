@@ -1,4 +1,5 @@
 // Icons
+export { ContentIcon } from "./ContentIcon"
 export { DatabaseIcon } from "./DatabaseIcon"
 export { NegativeIcon } from "./NegativeIcon"
 export { PagesIcon } from "./PagesIcon"
@@ -6,6 +7,7 @@ export { PositiveIcon } from "./PositiveIcon"
 export { QuestionMarkIcon } from "./QuestionMarkIcon"
 
 export type IconName =
+  | "ContentIcon"
   | "DatabaseIcon"
   | "NegativeIcon"
   | "PagesIcon"
@@ -24,10 +26,12 @@ export { MarkdownLogo } from "./MarkdownLogo"
 export { MdxLogo } from "./MdxLogo"
 export { NextLogo } from "./NextLogo"
 export { NotionLogo } from "./NotionLogo"
+export { ReactLogo } from "./ReactLogo"
 export { RemixLogo } from "./RemixLogo"
 export { SanityLogo } from "./SanityLogo"
 export { SvelteLogo } from "./SvelteLogo"
 export { ViteLogo } from "./ViteLogo"
+export { VueLogo } from "./VueLogo"
 
 export type LogoName =
   | "Astro"
@@ -41,10 +45,12 @@ export type LogoName =
   | "Mdx"
   | "Next"
   | "Notion"
+  | "React"
   | "Remix"
   | "Sanity"
   | "Svelte"
   | "Vite"
+  | "Vue"
 
 // Arrows
 
