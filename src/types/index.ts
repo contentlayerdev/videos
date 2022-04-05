@@ -7,6 +7,7 @@ export type CurrentTimelineItem = {
   currentFrame: number
   lastFrame: number
   fps: number
+  durationInFrames: number
 }
 
 export type TimelineItem = {

@@ -1,4 +1,4 @@
-import { interpolate } from "remotion"
+import { interpolate, useCurrentFrame } from "remotion"
 
 import {
   ContentIcon,
@@ -206,8 +206,28 @@ const SequenceBody: React.FC<SequenceBodyProps> = (props) => {
   )
 }
 
-const SequenceWrapper: React.FC = ({ children }) => {
-  return <div className="w-full h-full">{children}</div>
+const SequenceWrapper: React.FC<{
+  currentFrame: number
+  durationInFrames: number
+  fps: number
+}> = (props) => {
+  const opacity = interpolate(
+    props.currentFrame,
+    [
+      0,
+      props.fps / 4,
+      props.durationInFrames - props.fps / 4,
+      props.durationInFrames,
+    ],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" }
+  )
+
+  return (
+    <div className="w-full h-full" style={{ opacity }}>
+      {props.children}
+    </div>
+  )
 }
 
 /* ----- Timeline Components ----- */
@@ -303,11 +323,21 @@ export const Timeline = {
 /* ----- Sequence Control ----- */
 
 export const Sequence: SequenceComponent = ({ timeline }) => {
-  const { Component, startingFrame, currentFrame, lastFrame, fps } =
-    useTimeline(timeline)
+  const {
+    Component,
+    startingFrame,
+    currentFrame,
+    lastFrame,
+    fps,
+    durationInFrames,
+  } = useTimeline(timeline)
 
   return (
-    <SequenceWrapper>
+    <SequenceWrapper
+      currentFrame={currentFrame}
+      durationInFrames={durationInFrames}
+      fps={fps}
+    >
       <Component
         startingFrame={startingFrame}
         currentFrame={currentFrame}

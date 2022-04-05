@@ -45,18 +45,22 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
       {
         frame: 5 * 30,
+        component: Intro.ModernWebStack.Timeline.Base,
+      },
+      {
+        frame: 6 * 30,
         component: Intro.ModernWebStack.Timeline.ShowPages,
       },
       {
-        frame: 7 * 30,
+        frame: 8 * 30,
         component: Intro.ModernWebStack.Timeline.ShowContent,
       },
       {
-        frame: 9 * 30,
+        frame: 10 * 30,
         component: Intro.ModernWebStack.Timeline.ShowProcessor,
       },
       {
-        frame: 11 * 30,
+        frame: 12 * 30,
         component: Intro.ModernWebStack.Timeline.ShowEverything,
       },
     ],

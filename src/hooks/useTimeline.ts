@@ -25,5 +25,6 @@ export function useTimeline(timeline: TimelineItem[]): CurrentTimelineItem {
     currentFrame: frame,
     lastFrame,
     fps,
+    durationInFrames,
   }
 }
