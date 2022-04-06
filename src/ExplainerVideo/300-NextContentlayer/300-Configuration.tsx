@@ -55,7 +55,7 @@ const SequenceTemplate: React.FC<{
 }> = (props) => {
   return (
     <>
-      <div className="pt-12 pb-24">
+      <div className="pt-12">
         <span className="block mb-8 h-16 opacity-75 text-primary">
           <Logo.ContentlayerLogo />
         </span>
@@ -70,27 +70,24 @@ const SequenceTemplate: React.FC<{
             {props.filename}
           </code>
         )}
-        {props.codeSnippet && (
-          <div className="px-48 py-12 relative">
-            <div
-              className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12"
-              style={{ height: "670px" }}
-            >
-              <span
-                className="block"
-                style={{ opacity: props.codeOpacity ?? 1 }}
-              >
-                <SyntaxHighlighter
-                  language="javascript"
-                  highlightLines={props.highlightLines ?? []}
-                >
-                  {props.codeSnippet}
-                </SyntaxHighlighter>
-              </span>
-            </div>
-          </div>
-        )}
       </div>
+      {props.codeSnippet && (
+        <div className="px-48 py-12 relative">
+          <div
+            className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12"
+            style={{ height: "670px" }}
+          >
+            <span className="block" style={{ opacity: props.codeOpacity ?? 1 }}>
+              <SyntaxHighlighter
+                language="javascript"
+                highlightLines={props.highlightLines ?? []}
+              >
+                {props.codeSnippet}
+              </SyntaxHighlighter>
+            </span>
+          </div>
+        </div>
+      )}
     </>
   )
 }
