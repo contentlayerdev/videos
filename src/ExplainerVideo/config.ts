@@ -139,6 +139,7 @@ const staticSequenceConfig: SequenceConfig[] = [
     ],
   },
   {
+    name: "[Next + MD] Parsing Utility",
     component: NextMarkdown.ParsingUtility.Sequence,
     durationInFrames: 18 * 30,
     audioSrc: NextMarkdownAudio.ParsingUtility,
@@ -169,11 +170,42 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextMarkdown.Challenges,
-  //   durationInFrames: 56 * 30,
-  //   audioSrc: NextMarkdownAudio.Challenges,
-  // },
+  {
+    name: "[Next + MD] Challenges",
+    component: NextMarkdown.Challenges.Sequence,
+    durationInFrames: 56 * 30,
+    audioSrc: NextMarkdownAudio.Challenges,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextMarkdown.Challenges.Timeline.EmptyPoints,
+      },
+      {
+        frame: 2 * 30,
+        component: NextMarkdown.Challenges.Timeline.Point01,
+      },
+      {
+        frame: 4 * 30,
+        component: NextMarkdown.Challenges.Timeline.Point02,
+      },
+      {
+        frame: 6 * 30,
+        component: NextMarkdown.Challenges.Timeline.Point03,
+      },
+      {
+        frame: 8 * 30,
+        component: NextMarkdown.Challenges.Timeline.Point04,
+      },
+      {
+        frame: 10 * 30,
+        component: NextMarkdown.Challenges.Timeline.Point05,
+      },
+      {
+        frame: 12 * 30,
+        component: NextMarkdown.Challenges.Timeline.Point06,
+      },
+    ],
+  },
   // Next.js + Contentlayer
   // {
   //   component: NextContentlayer.Intro,
