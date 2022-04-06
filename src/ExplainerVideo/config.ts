@@ -242,6 +242,7 @@ const staticSequenceConfig: SequenceConfig[] = [
     ],
   },
   {
+    name: "[CL + MD] Configuration",
     component: NextContentlayer.Configuration.Sequence,
     durationInFrames: 32 * 30,
     audioSrc: NextContentlayerAudio.Configuration,
@@ -296,6 +297,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   //   audioSrc: NextContentlayerAudio.ContentTransformation,
   // },
   {
+    name: "[CL + MD] Generate Post Paths",
     component: NextContentlayer.GetStaticPaths.Sequence,
     durationInFrames: 8 * 30,
     audioSrc: NextContentlayerAudio.GetStaticPaths,
@@ -319,11 +321,33 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextContentlayer.GetStaticProps,
-  //   durationInFrames: 11 * 30,
-  //   audioSrc: NextContentlayerAudio.GetStaticProps,
-  // },
+  {
+    name: "[CL + MD] Retrieve Page Data",
+    component: NextContentlayer.GetStaticProps.Sequence,
+    durationInFrames: 11 * 30,
+    audioSrc: NextContentlayerAudio.GetStaticProps,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextContentlayer.GetStaticProps.Timeline.ShowExistingCode,
+      },
+      {
+        frame: 2 * 30,
+        component:
+          NextContentlayer.GetStaticProps.Timeline.ReplaceGetStaticProps,
+      },
+      {
+        frame: 4 * 30,
+        component:
+          NextContentlayer.GetStaticProps.Timeline.HighlightDataRetrieval,
+      },
+      {
+        frame: 6 * 30,
+        component:
+          NextContentlayer.GetStaticProps.Timeline.HighlightReturnStatement,
+      },
+    ],
+  },
   // {
   //   component: NextContentlayer.Benefits,
   //   durationInFrames: 54 * 30,
