@@ -113,12 +113,8 @@ const EmptyFileTree: TimelineComponent = () => {
 }
 
 const FileTreeWithFiles: TimelineComponent = (props) => {
-  const opacity = interpolate(
-    props.currentFrame,
-    [props.startingFrame, props.startingFrame + props.fps / 2],
-    [0, 1],
-    { extrapolateRight: "clamp" }
-  )
+  const opacity = useTimelineObjectFade(props)
+
   return (
     <div className={contentWrapperClasses}>
       <div className={codeSnippetWrapperClasses}>
@@ -159,10 +155,7 @@ const SlideFileTree: TimelineComponent = (props) => {
 }
 
 const EmptyPost: TimelineComponent = (props) => {
-  const opacity = useTimelineObjectFade(props, {
-    state: "active",
-    transitionDuration: 0.25,
-  })
+  const opacity = useTimelineObjectFade(props, { transitionDuration: 0.25 })
 
   return (
     <PostPreview
