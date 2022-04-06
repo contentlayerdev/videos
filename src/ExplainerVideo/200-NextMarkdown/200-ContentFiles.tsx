@@ -1,5 +1,9 @@
 import { interpolate } from "remotion"
-import type { SequenceComponent, TimelineObjectState } from "../../types"
+import type {
+  CurrentTimelineItem,
+  SequenceComponent,
+  TimelineObjectState,
+} from "../../types"
 import {
   useTimeline,
   useTimelineObjectFade,
@@ -10,12 +14,10 @@ import { NextPlusMarkdown } from "./components/NextPlusMarkdown"
 
 /* ----- Types ----- */
 
-type TimelineComponentProps = {
-  startingFrame: number
-  currentFrame: number
-  lastFrame: number
-  fps: number
-}
+type TimelineComponentProps = Pick<
+  CurrentTimelineItem,
+  "startingFrame" | "currentFrame" | "lastFrame" | "fps"
+>
 
 type TimelineComponent = React.FC<TimelineComponentProps>
 
