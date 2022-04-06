@@ -1,6 +1,10 @@
 import ReactSyntaxHighlighter from "react-syntax-highlighter"
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
+interface DataHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
+  "data-highlight"?: boolean
+}
+
 export const SyntaxHighlighter = ({
   language,
   children,
@@ -11,7 +15,7 @@ export const SyntaxHighlighter = ({
   children: string
   highlightLines?: number[]
 }) => {
-  const resolveLineHighlight = (line: number): React.HTMLProps<HTMLElement> => {
+  const resolveLineHighlight = (line: number): DataHighlightProps => {
     if (highlightLines.includes(line)) return { "data-highlight": true }
     return {}
   }
