@@ -25,16 +25,16 @@ type TimelineComponent = React.FC<TimelineComponentProps>
 export const MetaLogos: React.FC = () => {
   return (
     <div className="mx-auto max-w-lg flex items-center justify-around mb-12 opacity-75">
-      <div>
+      <div className="h-16">
         <Logo.NextLogo />
       </div>
-      <div>
+      <div className="h-16">
         <Logo.RemixLogo />
       </div>
-      <div>
+      <div className="h-16">
         <Logo.SvelteLogo />
       </div>
-      <div>
+      <div className="h-16">
         <Logo.AstroLogo />
       </div>
     </div>

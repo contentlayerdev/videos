@@ -45,16 +45,16 @@ export const MetaLogos: React.FC<MetaLogosProps> = (props) => {
 
   return (
     <div className="mx-auto max-w-lg flex items-center justify-around mb-12">
-      <div style={{ opacity: getOpacity("next") }}>
+      <div className="h-16" style={{ opacity: getOpacity("next") }}>
         <Logo.NextLogo />
       </div>
-      <div style={{ opacity: getOpacity("remix") }}>
+      <div className="h-16" style={{ opacity: getOpacity("remix") }}>
         <Logo.RemixLogo />
       </div>
-      <div style={{ opacity: getOpacity("svelte") }}>
+      <div className="h-16" style={{ opacity: getOpacity("svelte") }}>
         <Logo.SvelteLogo />
       </div>
-      <div style={{ opacity: getOpacity("astro") }}>
+      <div className="h-16" style={{ opacity: getOpacity("astro") }}>
         <Logo.AstroLogo />
       </div>
     </div>
