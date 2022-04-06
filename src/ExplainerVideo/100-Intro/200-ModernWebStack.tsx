@@ -1,5 +1,3 @@
-import { interpolate } from "remotion"
-
 import { Arrow, Logo, Icon } from "../../assets"
 import {
   useTimeline,
@@ -68,7 +66,7 @@ const ContentSources = () => {
     <div className="border-2 rounded-lg p-12 border-lightGray">
       <div className="flex items-center justify-between mb-8">
         <div className="h-20 mx-6">
-          <Logo.MarkdownLogo />{" "}
+          <Logo.MarkdownLogo />
         </div>
         <div className="h-20 mx-6">
           <Logo.ContentfulLogo />
@@ -124,7 +122,7 @@ const SequenceHeader: React.FC<{
         Modern Meta Frameworks
       </h2>
       <h3 className="text-5xl font-thin text-center">
-        Content as Data, Unprescribed.
+        Content as Data, Unprescribed
       </h3>
     </div>
   )

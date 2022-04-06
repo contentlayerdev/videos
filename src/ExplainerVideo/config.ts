@@ -213,11 +213,34 @@ const staticSequenceConfig: SequenceConfig[] = [
     durationInFrames: 3 * 30,
     audioSrc: NextContentlayerAudio.Intro,
   },
-  // {
-  //   component: NextContentlayer.ModernStack,
-  //   durationInFrames: 10 * 30,
-  //   audioSrc: NextContentlayerAudio.ModernStack,
-  // },
+  {
+    name: "[CL + MD] Modern Stack",
+    component: NextContentlayer.ModernWebStack.Sequence,
+    durationInFrames: 10 * 30,
+    audioSrc: NextContentlayerAudio.ModernWebStack,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextContentlayer.ModernWebStack.Timeline.EmptyBody,
+      },
+      {
+        frame: 2 * 30,
+        component: NextContentlayer.ModernWebStack.Timeline.ShowProcessor,
+      },
+      {
+        frame: 4 * 30,
+        component: NextContentlayer.ModernWebStack.Timeline.ShowContent,
+      },
+      {
+        frame: 6 * 30,
+        component: NextContentlayer.ModernWebStack.Timeline.ShowPages,
+      },
+      {
+        frame: 8 * 30,
+        component: NextContentlayer.ModernWebStack.Timeline.ShowEverything,
+      },
+    ],
+  },
   // {
   //   component: NextContentlayer.Configuration,
   //   durationInFrames: 32 * 30,

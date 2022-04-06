@@ -1,5 +1,5 @@
 export * as Intro from "./100-Intro"
-export * as ModernStack from "./200-ModernStack"
+export * as ModernWebStack from "./200-ModernWebStack"
 export * as Configuration from "./300-Configuration"
 export * as ContentTransformation from "./400-ContentTransformation"
 export * as GetStaticPaths from "./500-GetStaticPaths"
