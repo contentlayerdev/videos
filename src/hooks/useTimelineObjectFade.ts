@@ -12,6 +12,12 @@ type FadeOptions = {
   maxOpacity?: number
   /** Duration (in seconds) of the fade transition. */
   transitionDuration?: number
+  /**
+   * The opacity from which to start the fade. This is usually 0 when starting
+   * from hidden, but some elements may use this value when transitioning from a
+   * visible state. In that case, it should probably match the defaultOpacity.
+   */
+  startingOpacity?: number
 }
 
 /**
@@ -39,6 +45,7 @@ export function useTimelineObjectFade(
     defaultOpacity = 1,
     transitionDuration = 0.5,
     maxOpacity = 1,
+    startingOpacity = 0,
   } = fadeOptions
   // Hidden elements always have a 0 opacity.
   if (state === "hidden") return 0
@@ -54,7 +61,7 @@ export function useTimelineObjectFade(
       lastFrame - fps * transitionDuration,
       lastFrame,
     ],
-    [0, maxOpacity, maxOpacity, defaultOpacity],
+    [startingOpacity, maxOpacity, maxOpacity, defaultOpacity],
     { extrapolateRight: "clamp" }
   )
 }
