@@ -47,6 +47,7 @@ const PostPreview: React.FC<{
   timelineItem: TimelineComponentProps
   frontmatterState: TimelineObjectState
   bodyState: TimelineObjectState
+  previewOpacity?: number
 }> = (props) => {
   const fadeOptions = {}
   const frontmatterOpacity = useTimelineObjectFade(props.timelineItem, {
@@ -72,7 +73,10 @@ const PostPreview: React.FC<{
           </SyntaxHighlighter>
         </div>
       </div>
-      <div className={codeSnippetWrapperClasses}>
+      <div
+        className={codeSnippetWrapperClasses}
+        style={{ opacity: props.previewOpacity ?? 1 }}
+      >
         <span className="block" style={{ opacity: frontmatterOpacity }}>
           <SyntaxHighlighter language="yaml">
             {postFrontmatterSnippet}
@@ -129,15 +133,43 @@ const FileTreeWithFiles: TimelineComponent = (props) => {
 }
 
 const SlideFileTree: TimelineComponent = (props) => {
-  return <p>SLIDE ME!</p>
+  const transitionFrames = [
+    props.startingFrame,
+    props.startingFrame + props.fps * 0.5,
+  ]
+  const x = interpolate(props.currentFrame, transitionFrames, [0, -580], {
+    extrapolateRight: "clamp",
+  })
+  const fontSize = interpolate(props.currentFrame, transitionFrames, [30, 24], {
+    extrapolateRight: "clamp",
+  })
+
+  return (
+    <div className={contentWrapperClasses}>
+      <div
+        className={codeSnippetWrapperClasses.replace("text-3xl", "")}
+        style={{ fontSize, transform: `translate(${x}px, 0)` }}
+      >
+        <SyntaxHighlighter language="text">
+          {contentTreeSnippet}
+        </SyntaxHighlighter>
+      </div>
+    </div>
+  )
 }
 
 const EmptyPost: TimelineComponent = (props) => {
+  const opacity = useTimelineObjectFade(props, {
+    state: "active",
+    transitionDuration: 0.25,
+  })
+
   return (
     <PostPreview
       timelineItem={props}
       frontmatterState="hidden"
       bodyState="hidden"
+      previewOpacity={opacity}
     />
   )
 }

@@ -89,15 +89,15 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextMarkdown.ContentFiles.Timeline.SlideFileTree,
       },
       {
-        frame: 6 * 30,
+        frame: 5 * 30,
         component: NextMarkdown.ContentFiles.Timeline.EmptyPost,
       },
       {
-        frame: 8 * 30,
+        frame: 5.5 * 30,
         component: NextMarkdown.ContentFiles.Timeline.AddPostFrontmatter,
       },
       {
-        frame: 10 * 30,
+        frame: 7.5 * 30,
         component: NextMarkdown.ContentFiles.Timeline.AddPostBody,
       },
     ],
