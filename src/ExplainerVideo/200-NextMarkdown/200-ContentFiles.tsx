@@ -1,6 +1,10 @@
 import { interpolate } from "remotion"
-import type { SequenceComponent } from "../../types"
-import { useTimeline, useSequenceFade } from "../../hooks"
+import type { SequenceComponent, TimelineObjectState } from "../../types"
+import {
+  useTimeline,
+  useTimelineObjectFade,
+  useSequenceFade,
+} from "../../hooks"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
 import { NextPlusMarkdown } from "./components/NextPlusMarkdown"
 
@@ -36,6 +40,51 @@ const postBodySnippet = `
 `.trim()
 
 /* ----- Shared Components ----- */
+
+const PostPreview: React.FC<{
+  timelineItem: TimelineComponentProps
+  frontmatterState: TimelineObjectState
+  bodyState: TimelineObjectState
+}> = (props) => {
+  const fadeOptions = {}
+  const frontmatterOpacity = useTimelineObjectFade(props.timelineItem, {
+    ...fadeOptions,
+    state: props.frontmatterState,
+  })
+  const bodyOpacity = useTimelineObjectFade(props.timelineItem, {
+    ...fadeOptions,
+    state: props.bodyState,
+  })
+
+  return (
+    <div
+      className="grid grid-cols-2 gap-8"
+      style={{ gridTemplateColumns: "auto minmax(0, 1fr)" }}
+    >
+      <div>
+        <div
+          className={codeSnippetWrapperClasses.replace("text-3xl", "text-2xl")}
+        >
+          <SyntaxHighlighter language="text" highlightLines={[4]}>
+            {contentTreeSnippet}
+          </SyntaxHighlighter>
+        </div>
+      </div>
+      <div className={codeSnippetWrapperClasses}>
+        <span className="block" style={{ opacity: frontmatterOpacity }}>
+          <SyntaxHighlighter language="yaml">
+            {postFrontmatterSnippet}
+          </SyntaxHighlighter>
+        </span>
+        <span className="block" style={{ opacity: bodyOpacity }}>
+          <SyntaxHighlighter language="markdown">
+            {postBodySnippet}
+          </SyntaxHighlighter>
+        </span>
+      </div>
+    </div>
+  )
+}
 
 /* ----- Timeline Components ----- */
 
@@ -81,43 +130,41 @@ const SlideFileTree: TimelineComponent = (props) => {
   return <p>SLIDE ME!</p>
 }
 
+const EmptyPost: TimelineComponent = (props) => {
+  return (
+    <PostPreview
+      timelineItem={props}
+      frontmatterState="hidden"
+      bodyState="hidden"
+    />
+  )
+}
+
 const AddPostFrontmatter: TimelineComponent = (props) => {
   return (
-    <div
-      className="grid grid-cols-2 gap-8"
-      style={{ gridTemplateColumns: "auto minmax(0, 1fr)" }}
-    >
-      <div>
-        <div
-          className={codeSnippetWrapperClasses.replace("text-3xl", "text-2xl")}
-        >
-          <SyntaxHighlighter language="text" highlightLines={[4]}>
-            {contentTreeSnippet}
-          </SyntaxHighlighter>
-        </div>
-      </div>
-      <div className={codeSnippetWrapperClasses}>
-        <SyntaxHighlighter language="yaml">
-          {postFrontmatterSnippet}
-        </SyntaxHighlighter>
-        <span className="block opacity-0">
-          <SyntaxHighlighter language="markdown">
-            {postBodySnippet}
-          </SyntaxHighlighter>
-        </span>
-      </div>
-    </div>
+    <PostPreview
+      timelineItem={props}
+      frontmatterState="active"
+      bodyState="hidden"
+    />
   )
 }
 
 const AddPostBody: TimelineComponent = (props) => {
-  return <p>Add post body</p>
+  return (
+    <PostPreview
+      timelineItem={props}
+      frontmatterState="visible"
+      bodyState="active"
+    />
+  )
 }
 
 export const Timeline = {
   EmptyFileTree,
   FileTreeWithFiles,
   SlideFileTree,
+  EmptyPost,
   AddPostFrontmatter,
   AddPostBody,
 }

@@ -1,5 +1,5 @@
 import { useCurrentFrame, useVideoConfig } from "remotion"
-import type { TimelineItem, CurrentTimelineItem } from "../types"
+import type { TimelineItemConfig, CurrentTimelineItem } from "../types"
 
 /**
  * Given a timeline configuration for a particular sequence, find the current
@@ -9,7 +9,9 @@ import type { TimelineItem, CurrentTimelineItem } from "../types"
  * @returns Current timeline item, along with useful values from
  * useVideoConfig()
  */
-export function useTimeline(timeline: TimelineItem[]): CurrentTimelineItem {
+export function useTimeline(
+  timeline: TimelineItemConfig[]
+): CurrentTimelineItem {
   const frame = useCurrentFrame()
   const { fps, durationInFrames } = useVideoConfig()
 

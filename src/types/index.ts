@@ -1,5 +1,54 @@
 import { FC } from "react"
 
+/* ----- Configuration ----- */
+
+/**
+ * Configuration for a composition.
+ */
+export type VideoConfig = {
+  sequences: SequenceConfig[]
+  totalDurationInFrames: number
+  fps: number
+  width: number
+  height: number
+}
+
+/**
+ * Configuration object for a sequence within a composition.
+ */
+export type SequenceConfig = {
+  component: SequenceComponent
+  durationInFrames: number
+  audioSrc: string
+  from?: number
+  timeline?: TimelineItemConfig[]
+}
+
+/**
+ * Parent component for a sequence. For sequences with timelines, this is the
+ * component responsible for controlling the timeline, which is often done using
+ * the useTimeline() hook.
+ */
+export type SequenceComponent = React.FC<{ timeline: TimelineItemConfig[] }>
+
+/**
+ * Configuration for a timeline item. These are defined in the config for a
+ * composition, and then used by the useTimeline() hook to output a
+ * CurrentTimelineItem.
+ */
+export type TimelineItemConfig = {
+  frame: number
+  component: FC<any>
+  props?: { [key: string]: any }
+}
+
+/* ----- useTimeline() ----- */
+
+/**
+ * Represents useful values for the current timeline item.
+ *
+ * See hook: useTimeline()
+ */
 export type CurrentTimelineItem = {
   Component: FC<{ [key: string]: any }>
   props?: { [key: string]: any }
@@ -10,26 +59,12 @@ export type CurrentTimelineItem = {
   durationInFrames: number
 }
 
-export type TimelineItem = {
-  frame: number
-  component: FC<any>
-  props?: { [key: string]: any }
-}
+/* ----- useTimelineObjectFade() ----- */
 
-export type SequenceComponent = React.FC<{ timeline: TimelineItem[] }>
-
-export type SequenceConfig = {
-  component: SequenceComponent
-  durationInFrames: number
-  audioSrc: string
-  from?: number
-  timeline?: TimelineItem[]
-}
-
-export type VideoConfig = {
-  sequences: SequenceConfig[]
-  totalDurationInFrames: number
-  fps: number
-  width: number
-  height: number
-}
+/**
+ * Tracks the visibility of a particular element in a shared component, used to
+ * move objects across various timeline items.
+ *
+ * See hook: useTimelineObjectFade()
+ */
+export type TimelineObjectState = "active" | "hidden" | "visible"

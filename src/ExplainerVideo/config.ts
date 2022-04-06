@@ -90,10 +90,14 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
       {
         frame: 6 * 30,
-        component: NextMarkdown.ContentFiles.Timeline.AddPostFrontmatter,
+        component: NextMarkdown.ContentFiles.Timeline.EmptyPost,
       },
       {
         frame: 8 * 30,
+        component: NextMarkdown.ContentFiles.Timeline.AddPostFrontmatter,
+      },
+      {
+        frame: 10 * 30,
         component: NextMarkdown.ContentFiles.Timeline.AddPostBody,
       },
     ],
