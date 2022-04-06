@@ -1,6 +1,25 @@
+import { interpolate } from "remotion"
+import { Logo } from "../../assets"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
+import {
+  useSequenceFade,
+  useTimeline,
+  useTimelineObjectFade,
+} from "../../hooks"
+import { CurrentTimelineItem, SequenceComponent } from "../../types"
 
-const code: string = `
+/* ----- Types ----- */
+
+type TimelineComponentProps = Pick<
+  CurrentTimelineItem,
+  "startingFrame" | "currentFrame" | "lastFrame" | "fps"
+>
+
+type TimelineComponent = React.FC<TimelineComponentProps>
+
+/* ----- Code Snippets ----- */
+
+const contentlayerConfigSnippet: string = `
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
 const Post = defineDocumentType(() => ({
@@ -15,22 +34,175 @@ const Post = defineDocumentType(() => ({
 export default makeSource({ contentDirPath: 'posts', documentTypes: [Post] })
 `.trim()
 
-export const Configuration = () => {
+const contentlayerConfigFile = `contentlayer.config.ts`
+
+const nextConfigSnippet = `
+import { withContentlayer } from 'next-contentlayer'
+
+export default withContentlayer({})
+`.trim()
+
+const nextConfigFile = `next.config.mjs`
+
+/* ----- Shared Components ----- */
+
+const SequenceTemplate: React.FC<{
+  filename?: string
+  filenameOpacity?: number
+  codeSnippet?: string
+  codeOpacity?: number
+  highlightLines?: number[]
+}> = (props) => {
   return (
-    <div className="w-full h-full">
-      <div className="py-24">
-        <h2 className="text-7xl text-center mb-8 font-bold">
-          Configure Content
+    <>
+      <div className="pt-12 pb-24">
+        <span className="block mb-8 h-16 opacity-75 text-primary">
+          <Logo.ContentlayerLogo />
+        </span>
+        <h2 className="text-7xl text-center font-bold mb-8">
+          Configure Contentlayer
         </h2>
-        <code className="block text-center text-3xl text-lightGray">
-          contentlayer.config.ts
-        </code>
+        {props.filename && (
+          <code
+            className="block text-center text-3xl text-lightGray"
+            style={{ opacity: props.filenameOpacity ?? 1 }}
+          >
+            {props.filename}
+          </code>
+        )}
+        {props.codeSnippet && (
+          <div className="px-48 py-12 relative">
+            <div
+              className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12"
+              style={{ height: "670px" }}
+            >
+              <span
+                className="block"
+                style={{ opacity: props.codeOpacity ?? 1 }}
+              >
+                <SyntaxHighlighter
+                  language="javascript"
+                  highlightLines={props.highlightLines ?? []}
+                >
+                  {props.codeSnippet}
+                </SyntaxHighlighter>
+              </span>
+            </div>
+          </div>
+        )}
       </div>
-      <div className="px-48 relative">
-        <div className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12">
-          <SyntaxHighlighter language="javascript">{code}</SyntaxHighlighter>
-        </div>
-      </div>
+    </>
+  )
+}
+
+const HighlightedContentlayerConfig: React.FC<{ highlightLines: number[] }> = ({
+  highlightLines,
+}) => {
+  return (
+    <SequenceTemplate
+      codeSnippet={contentlayerConfigSnippet}
+      filename={contentlayerConfigFile}
+      highlightLines={highlightLines}
+    />
+  )
+}
+
+/* ----- Timeline Components ----- */
+
+const BlankSlate: TimelineComponent = () => {
+  return <SequenceTemplate />
+}
+
+const ShowContentlayerConfig: TimelineComponent = (props) => {
+  const opacity = useTimelineObjectFade(props)
+  return (
+    <SequenceTemplate
+      codeSnippet={contentlayerConfigSnippet}
+      codeOpacity={opacity}
+      filename={contentlayerConfigFile}
+      filenameOpacity={opacity}
+    />
+  )
+}
+
+const HighlightExport: TimelineComponent = () => {
+  return <HighlightedContentlayerConfig highlightLines={[12]} />
+}
+
+const HighlightPost: TimelineComponent = () => {
+  return <HighlightedContentlayerConfig highlightLines={[4]} />
+}
+
+const HighlightTitleField: TimelineComponent = () => {
+  return <HighlightedContentlayerConfig highlightLines={[7]} />
+}
+
+const HighlightBodyField: TimelineComponent = () => {
+  return <HighlightedContentlayerConfig highlightLines={[8]} />
+}
+
+const HighlightFilePath: TimelineComponent = () => {
+  return <HighlightedContentlayerConfig highlightLines={[5]} />
+}
+
+const HideContentlayerConfig: TimelineComponent = (props) => {
+  const opacity = interpolate(
+    props.currentFrame,
+    [props.lastFrame - props.fps * 0.5, props.lastFrame],
+    [1, 0],
+    { extrapolateRight: "clamp" }
+  )
+
+  return (
+    <SequenceTemplate
+      codeSnippet={contentlayerConfigSnippet}
+      codeOpacity={opacity}
+      filename={contentlayerConfigFile}
+      filenameOpacity={opacity}
+    />
+  )
+}
+
+const ShowNextConfig: TimelineComponent = (props) => {
+  const opacity = useTimelineObjectFade(props)
+  return (
+    <SequenceTemplate
+      codeSnippet={nextConfigSnippet}
+      codeOpacity={opacity}
+      filename={nextConfigFile}
+      filenameOpacity={opacity}
+    />
+  )
+}
+
+export const Timeline = {
+  BlankSlate,
+  ShowContentlayerConfig,
+  HighlightExport,
+  HighlightPost,
+  HighlightTitleField,
+  HighlightBodyField,
+  HighlightFilePath,
+  HideContentlayerConfig,
+  ShowNextConfig,
+}
+
+/* ----- Sequence Control ----- */
+
+export const Sequence: SequenceComponent = ({ timeline }) => {
+  const { Component, startingFrame, currentFrame, lastFrame, fps } =
+    useTimeline(timeline)
+
+  const opacity = useSequenceFade()
+
+  return (
+    <div className="w-full h-full" style={{ opacity }}>
+      <Component
+        startingFrame={startingFrame}
+        currentFrame={currentFrame}
+        lastFrame={lastFrame}
+        fps={fps}
+      />
     </div>
   )
 }

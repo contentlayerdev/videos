@@ -241,11 +241,55 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextContentlayer.Configuration,
-  //   durationInFrames: 32 * 30,
-  //   audioSrc: NextContentlayerAudio.Configuration,
-  // },
+  {
+    component: NextContentlayer.Configuration.Sequence,
+    durationInFrames: 32 * 30,
+    audioSrc: NextContentlayerAudio.Configuration,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextContentlayer.Configuration.Timeline.BlankSlate,
+      },
+      {
+        frame: 2 * 30,
+        component:
+          NextContentlayer.Configuration.Timeline.ShowContentlayerConfig,
+      },
+      {
+        frame: 4 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightExport,
+      },
+      {
+        frame: 6 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightPost,
+      },
+      {
+        frame: 8 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightTitleField,
+      },
+      {
+        frame: 10 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightBodyField,
+      },
+      {
+        frame: 12 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightFilePath,
+      },
+      {
+        frame: 14 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightExport,
+      },
+      {
+        frame: 16 * 30,
+        component:
+          NextContentlayer.Configuration.Timeline.HideContentlayerConfig,
+      },
+      {
+        frame: 18 * 30,
+        component: NextContentlayer.Configuration.Timeline.ShowNextConfig,
+      },
+    ],
+  },
   // {
   //   component: NextContentlayer.ContentTransformation,
   //   durationInFrames: 21 * 30,
