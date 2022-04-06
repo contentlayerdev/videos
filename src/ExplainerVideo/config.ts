@@ -207,11 +207,12 @@ const staticSequenceConfig: SequenceConfig[] = [
     ],
   },
   // Next.js + Contentlayer
-  // {
-  //   component: NextContentlayer.Intro,
-  //   durationInFrames: 3 * 30,
-  //   audioSrc: NextContentlayerAudio.Intro,
-  // },
+  {
+    name: "[CL + MD] Intro",
+    component: NextContentlayer.Intro.Sequence,
+    durationInFrames: 3 * 30,
+    audioSrc: NextContentlayerAudio.Intro,
+  },
   // {
   //   component: NextContentlayer.ModernStack,
   //   durationInFrames: 10 * 30,
