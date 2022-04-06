@@ -295,11 +295,30 @@ const staticSequenceConfig: SequenceConfig[] = [
   //   durationInFrames: 21 * 30,
   //   audioSrc: NextContentlayerAudio.ContentTransformation,
   // },
-  // {
-  //   component: NextContentlayer.GetStaticPaths,
-  //   durationInFrames: 8 * 30,
-  //   audioSrc: NextContentlayerAudio.GetStaticPaths,
-  // },
+  {
+    component: NextContentlayer.GetStaticPaths.Sequence,
+    durationInFrames: 8 * 30,
+    audioSrc: NextContentlayerAudio.GetStaticPaths,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextContentlayer.GetStaticPaths.Timeline.ShowExistingCode,
+      },
+      {
+        frame: 2 * 30,
+        component: NextContentlayer.GetStaticPaths.Timeline.ShowDataImport,
+      },
+      {
+        frame: 4 * 30,
+        component:
+          NextContentlayer.GetStaticPaths.Timeline.ReplaceGetStaticPaths,
+      },
+      {
+        frame: 6 * 30,
+        component: NextContentlayer.GetStaticPaths.Timeline.HighlightPostsMap,
+      },
+    ],
+  },
   // {
   //   component: NextContentlayer.GetStaticProps,
   //   durationInFrames: 11 * 30,
