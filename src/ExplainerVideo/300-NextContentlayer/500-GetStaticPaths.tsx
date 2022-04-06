@@ -4,33 +4,6 @@ import { useSequenceFade, useTimeline } from "../../hooks"
 import { CurrentTimelineItem, SequenceComponent } from "../../types"
 import { generatePagePathsSnippet } from "../200-NextMarkdown/300-GenerateRoutes"
 
-// export const GetStaticPaths = () => {
-//   return (
-//     <div className="w-full h-full">
-//       <div className="py-24">
-//         <h2 className="text-7xl text-center mb-8 font-bold">Generate Routes</h2>
-//         <code className="block text-center text-3xl text-lightGray">
-//           pages/posts/[slug].tsx
-//         </code>
-//       </div>
-//       <div className="px-48 relative">
-//         <div className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12">
-//           <SyntaxHighlighter language="javascript">{code}</SyntaxHighlighter>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-/**
- * Timeline
- *
- * ShowExistingCode
- * ShowDataImport
- * ReplaceGetStaticPaths
- *
- */
-
 /* ----- Types ----- */
 
 type TimelineComponentProps = Pick<
@@ -145,7 +118,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
           <Logo.ContentlayerLogo />
         </span>
         <h2 className="text-7xl text-center font-bold mb-8">
-          Generate Post Pages
+          Generate Post Paths
         </h2>
         <code className="block text-center text-3xl text-lightGray">
           pages/post/[slug].jsx
