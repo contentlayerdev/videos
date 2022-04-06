@@ -106,11 +106,38 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextMarkdown.GenerateRoutes,
-  //   durationInFrames: 19 * 30,
-  //   audioSrc: NextMarkdownAudio.GenerateRoutes,
-  // },
+  {
+    name: "[Next + MD] Generate Routes",
+    component: NextMarkdown.GenerateRoutes.Sequence,
+    durationInFrames: 19 * 30,
+    audioSrc: NextMarkdownAudio.GenerateRoutes,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextMarkdown.GenerateRoutes.Timeline.BlankSlate,
+      },
+      {
+        frame: 2 * 30,
+        component: NextMarkdown.GenerateRoutes.Timeline.ShowFilename,
+      },
+      {
+        frame: 4 * 30,
+        component: NextMarkdown.GenerateRoutes.Timeline.ShowCodeSnippet,
+      },
+      {
+        frame: 6 * 30,
+        component: NextMarkdown.GenerateRoutes.Timeline.HighlightGetStaticPaths,
+      },
+      {
+        frame: 8 * 30,
+        component: NextMarkdown.GenerateRoutes.Timeline.HighlightFilePaths,
+      },
+      {
+        frame: 10 * 30,
+        component: NextMarkdown.GenerateRoutes.Timeline.HighlightPageUrlPaths,
+      },
+    ],
+  },
   // {
   //   component: NextMarkdown.ParsingUtility,
   //   durationInFrames: 18 * 30,

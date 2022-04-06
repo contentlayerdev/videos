@@ -205,7 +205,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const opacity = useSequenceFade()
 
   return (
-    <div className="w-full h-full relative" style={{ opacity }}>
+    <div className="w-full h-full" style={{ opacity }}>
       <div className="pt-12 pb-24">
         <span className="block mb-10">
           <NextPlusMarkdown />

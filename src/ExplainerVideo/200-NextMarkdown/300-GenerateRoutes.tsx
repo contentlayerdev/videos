@@ -1,26 +1,25 @@
-import { FC, useRef } from "react"
 import { useCurrentFrame, interpolate } from "remotion"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
+import {
+  useSequenceFade,
+  useTimeline,
+  useTimelineObjectFade,
+} from "../../hooks"
+import { CurrentTimelineItem, SequenceComponent } from "../../types"
+import { NextPlusMarkdown } from "./components/NextPlusMarkdown"
 
-/* ----- Dependencies ----- */
+/* ----- Types ----- */
 
-const dependenciesSnippet = `
-import fs from "fs";
-import glob from "glob";
-import path from "path";
-`.trim()
+type TimelineComponentProps = Pick<
+  CurrentTimelineItem,
+  "startingFrame" | "currentFrame" | "lastFrame" | "fps"
+>
 
-const DependencyCode = () => {
-  return (
-    <SyntaxHighlighter language="javascript">
-      {dependenciesSnippet}
-    </SyntaxHighlighter>
-  )
-}
+type TimelineComponent = React.FC<TimelineComponentProps>
 
-/* ----- Full Code ----- */
+/* ----- Code Snippets ----- */
 
-const fullCodeSnippet = `
+const generatePagePathsSnippet = `
 export const getStaticPaths = async () => {
   const postsDir = path.join(process.cwd(), "../posts");
   const allPostPaths = glob.sync(path.join(postsDir, "**/*.md"));
@@ -34,102 +33,131 @@ export const getStaticPaths = async () => {
 };
 `.trim()
 
-const FullCode = ({
-  startingFrame,
-  wrapperRef,
-}: {
-  startingFrame: number
-  wrapperRef: React.RefObject<HTMLDivElement>
+/* ----- Shared Components ----- */
+
+const SequenceHeader: React.FC<{ filenameOpacity?: number }> = ({
+  filenameOpacity = 1,
 }) => {
-  const frame = useCurrentFrame()
-  const opacity = interpolate(
-    frame,
-    [startingFrame, startingFrame + 20],
-    [0, 1],
-    { extrapolateRight: "clamp" }
+  return (
+    <div className="pt-12 pb-24">
+      <span className="block mb-10">
+        <NextPlusMarkdown />
+      </span>
+      <h2 className="text-7xl text-center font-bold mb-8">
+        Generate Post Routes
+      </h2>
+      <code
+        className="block text-center text-3xl text-lightGray"
+        style={{ opacity: filenameOpacity }}
+      >
+        pages/post/[slug].jsx
+      </code>
+    </div>
   )
+}
 
-  const startY = 0
-  const endY = 48 + 18.62 * 5
-
-  const currentY = interpolate(
-    frame,
-    [startingFrame, startingFrame + 20],
-    [startY, endY],
-    { extrapolateRight: "clamp" }
+const CodeSnippet: React.FC<{
+  codeOpacity?: number
+  opacity?: number
+  highlightLines?: number[]
+}> = ({ codeOpacity = 1, opacity = 1, highlightLines = [] }) => {
+  return (
+    <div className="px-48 relative">
+      <div
+        className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12 overflow-y-scroll"
+        style={{ opacity }}
+      >
+        <span className="block" style={{ opacity: codeOpacity }}>
+          <SyntaxHighlighter
+            highlightLines={highlightLines}
+            language="javascript"
+          >
+            {generatePagePathsSnippet}
+          </SyntaxHighlighter>
+        </span>
+      </div>
+    </div>
   )
+}
 
-  if (wrapperRef.current) {
-    wrapperRef.current.scrollTop = currentY
-  }
+/* ----- Timeline Components ----- */
 
+const BlankSlate: TimelineComponent = () => {
+  return <SequenceHeader filenameOpacity={0} />
+}
+
+const ShowFilename: TimelineComponent = (props) => {
+  const opacity = useTimelineObjectFade(props)
   return (
     <>
-      <SyntaxHighlighter language="javascript">
-        {dependenciesSnippet}
-      </SyntaxHighlighter>
-      <span className="block" style={{ opacity }}>
-        <SyntaxHighlighter highlightLines={[5, 6]} language="javascript">
-          {fullCodeSnippet}
-        </SyntaxHighlighter>
-      </span>
+      <SequenceHeader filenameOpacity={opacity} />
+      <CodeSnippet opacity={opacity} codeOpacity={0} />
     </>
   )
 }
 
-/* ----- Timeline Definition ----- */
-
-type TimelineItem = {
-  frame: number
-  component: FC<{
-    startingFrame: number
-    wrapperRef: React.RefObject<HTMLDivElement>
-  }>
+const ShowCodeSnippet: TimelineComponent = (props) => {
+  const opacity = useTimelineObjectFade(props)
+  return (
+    <>
+      <SequenceHeader />
+      <CodeSnippet codeOpacity={opacity} />
+    </>
+  )
 }
 
-const timeline: TimelineItem[] = [
-  { frame: 0, component: DependencyCode },
-  { frame: 100, component: FullCode },
-]
+const HighlightGetStaticPaths: TimelineComponent = () => {
+  return (
+    <>
+      <SequenceHeader />
+      <CodeSnippet highlightLines={[1]} />
+    </>
+  )
+}
 
-/* ----- Sequence Component ----- */
+const HighlightFilePaths: TimelineComponent = () => {
+  return (
+    <>
+      <SequenceHeader />
+      <CodeSnippet highlightLines={[2, 3]} />
+    </>
+  )
+}
 
-export const GenerateRoutes = () => {
-  const frame = useCurrentFrame()
-  const codeBlock = useRef<HTMLDivElement>(null)
+const HighlightPageUrlPaths: TimelineComponent = () => {
+  return (
+    <>
+      <SequenceHeader />
+      <CodeSnippet highlightLines={[4, 5, 6, 7, 8, 9]} />
+    </>
+  )
+}
 
-  const currentTimelineItem = timeline.find((item, idx) => {
-    // Item isn't active yet.
-    if (frame < item.frame) return false
-    // Last item in the timeline is active.
-    if (frame >= item.frame && !timeline[idx + 1]) return true
-    // If an item that isn't the last item is active.
-    if (frame >= item.frame && frame < timeline[idx + 1].frame) return true
-  })!
-  const CodeComponent = currentTimelineItem.component
+export const Timeline = {
+  BlankSlate,
+  ShowFilename,
+  ShowCodeSnippet,
+  HighlightGetStaticPaths,
+  HighlightFilePaths,
+  HighlightPageUrlPaths,
+}
+
+/* ----- Sequence Control ----- */
+
+export const Sequence: SequenceComponent = ({ timeline }) => {
+  const { Component, startingFrame, currentFrame, lastFrame, fps } =
+    useTimeline(timeline)
+
+  const opacity = useSequenceFade()
 
   return (
-    <div className="w-full h-full">
-      <div className="py-20">
-        <h2 className="text-7xl text-center mb-8 font-bold">
-          Generate Post Routes
-        </h2>
-        <code className="block text-center text-3xl text-lightGray">
-          pages/post/[slug].jsx
-        </code>
-      </div>
-      <div className="px-48 relative">
-        <div
-          className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12 overflow-y-scroll"
-          style={{ height: "42rem" }}
-          ref={codeBlock}
-        >
-          <CodeComponent
-            startingFrame={currentTimelineItem.frame}
-            wrapperRef={codeBlock}
-          />
-        </div>
-      </div>
+    <div className="w-full h-full" style={{ opacity }}>
+      <Component
+        startingFrame={startingFrame}
+        currentFrame={currentFrame}
+        lastFrame={lastFrame}
+        fps={fps}
+      />
     </div>
   )
 }
