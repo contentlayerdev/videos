@@ -51,17 +51,20 @@ export function useTimelineObjectFade(
   if (state === "hidden") return 0
   // Visible elements rest at their defaultOpacity.
   if (state === "visible") return defaultOpacity
+  // Fade in controls.
+  let transitionFrames = [
+    startingFrame,
+    startingFrame + fps * transitionDuration,
+  ]
+  let transitionValues = [startingOpacity, maxOpacity]
+  // Determine if we need to add fade out controls.
+  if (defaultOpacity !== maxOpacity) {
+    transitionFrames.push(lastFrame - fps * transitionDuration, lastFrame)
+    transitionValues.push(maxOpacity, defaultOpacity)
+  }
   // Otherwise, the element is active and we calculate its current opacity
   // value.
-  return interpolate(
-    currentFrame,
-    [
-      startingFrame,
-      startingFrame + fps * transitionDuration,
-      lastFrame - fps * transitionDuration,
-      lastFrame,
-    ],
-    [startingOpacity, maxOpacity, maxOpacity, defaultOpacity],
-    { extrapolateRight: "clamp" }
-  )
+  return interpolate(currentFrame, transitionFrames, transitionValues, {
+    extrapolateRight: "clamp",
+  })
 }
