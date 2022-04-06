@@ -17,6 +17,7 @@ export type VideoConfig = {
  * Configuration object for a sequence within a composition.
  */
 export type SequenceConfig = {
+  name?: string
   component: SequenceComponent
   durationInFrames: number
   audioSrc: string

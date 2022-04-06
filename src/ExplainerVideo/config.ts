@@ -14,11 +14,13 @@ import * as NextContentlayerAudio from "./300-NextContentlayer/audio"
 const staticSequenceConfig: SequenceConfig[] = [
   // Intro
   {
+    name: "[Intro] Title",
     component: Intro.Intro.Sequence,
     durationInFrames: 4 * 30,
     audioSrc: IntroAudio.Intro,
   },
   {
+    name: "[Intro] Modern Web Stack",
     component: Intro.ModernWebStack.Sequence,
     durationInFrames: 30 * 30,
     audioSrc: IntroAudio.ModernWebStack,
@@ -67,11 +69,13 @@ const staticSequenceConfig: SequenceConfig[] = [
   },
   // Next.js + Markdown
   {
+    name: "[Next + MD] Intro",
     component: NextMarkdown.Intro.Sequence,
     durationInFrames: 7 * 30,
     audioSrc: NextMarkdownAudio.Intro,
   },
   {
+    name: "[Next + MD] Content Files",
     component: NextMarkdown.ContentFiles.Sequence,
     durationInFrames: 14 * 30,
     audioSrc: NextMarkdownAudio.ContentFiles,
