@@ -15,7 +15,7 @@ type TimelineComponent = React.FC<TimelineComponentProps>
 /* ----- Code Snippets ----- */
 
 const getStaticPropsOpenSnippet = `
-export const getStaticProps = async ({ params }) => {
+export async function getStaticProps = async ({ params }) => {
 `.trim()
 
 const getStaticPropsCloseSnippet = `
@@ -23,7 +23,7 @@ const getStaticPropsCloseSnippet = `
 `.trim()
 
 const getStaticPropsSnippet = `
-export const getStaticProps = async ({ params }) => {};
+export async function getStaticProps = async ({ params }) => {};
 `.trim()
 
 const retrieveSourceFileSnippet = `
@@ -77,7 +77,7 @@ ${getStaticPropsOpenSnippet}
 ${getStaticPropsCloseSnippet}
 `.trim()
 
-const withReturnStatementSnippet = `
+export const withReturnStatementSnippet = `
 ${dependenciesSnippet}
 
 ${getStaticPropsOpenSnippet}

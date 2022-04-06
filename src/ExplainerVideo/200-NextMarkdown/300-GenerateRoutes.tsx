@@ -18,8 +18,8 @@ type TimelineComponent = React.FC<TimelineComponentProps>
 
 /* ----- Code Snippets ----- */
 
-const generatePagePathsSnippet = `
-export const getStaticPaths = async () => {
+export const generatePagePathsSnippet = `
+export async function getStaticPaths = async () => {
   const postsDir = path.join(process.cwd(), "../posts");
   const allPostPaths = glob.sync(path.join(postsDir, "**/*.md"));
   allPostPaths.map((filePath) => {
@@ -43,7 +43,7 @@ const SequenceHeader: React.FC<{ filenameOpacity?: number }> = ({
         <NextPlusMarkdown />
       </span>
       <h2 className="text-7xl text-center font-bold mb-8">
-        Generate Post Routes
+        Generate Post Pages
       </h2>
       <code
         className="block text-center text-3xl text-lightGray"
