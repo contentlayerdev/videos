@@ -2,4 +2,8 @@
   [data-highlight="true"] {
     @apply bg-highlight;
   }
+
+  pre > code {
+    white-space: pre-wrap !important;
+  }
 }
