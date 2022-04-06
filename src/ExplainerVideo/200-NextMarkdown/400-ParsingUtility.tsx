@@ -1,6 +1,43 @@
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
+import { useSequenceFade, useTimeline } from "../../hooks"
+import { CurrentTimelineItem, SequenceComponent } from "../../types"
+import { NextPlusMarkdown } from "./components/NextPlusMarkdown"
 
-const dependencies = `
+/* ----- Types ----- */
+
+type TimelineComponentProps = Pick<
+  CurrentTimelineItem,
+  "startingFrame" | "currentFrame" | "lastFrame" | "fps"
+>
+
+type TimelineComponent = React.FC<TimelineComponentProps>
+
+/* ----- Code Snippets ----- */
+
+const getStaticPropsOpenSnippet = `
+export const getStaticProps = async ({ params }) => {
+`.trim()
+
+const getStaticPropsCloseSnippet = `
+};
+`.trim()
+
+const getStaticPropsSnippet = `
+export const getStaticProps = async ({ params }) => {};
+`.trim()
+
+const retrieveSourceFileSnippet = `
+  const pagePath = \`/\${params.id.join("/")}\`
+  const rawContent = fs.readFileSync(filePath).toString();
+`.trim()
+
+const withRetrieveSourceFileSnippet = `
+${getStaticPropsOpenSnippet}
+  ${retrieveSourceFileSnippet}
+${getStaticPropsCloseSnippet}
+`.trim()
+
+const dependenciesSnippet = `
 import fs from "fs";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
@@ -10,11 +47,13 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 `.trim()
 
-const postPreview = `
-export const getStaticProps = async ({ params }) => {
-  const pagePath = \`/\${params.id.join("/")}\`
-  const rawContent = fs.readFileSync(filePath).toString();
+const withDependenciesSnippet = `
+${dependenciesSnippet}
 
+${withRetrieveSourceFileSnippet}
+`.trim()
+
+const transformCodeSnippet = `
   const { data, content } = matter(rawContent);
   const frontmatter = data as PageFrontmatter;
 
@@ -26,6 +65,25 @@ export const getStaticProps = async ({ params }) => {
     .process(content);
 
   const urlPath = buildPageUrlPath(filePath);
+`.trim()
+
+const withTransformCodeSnippet = `
+${dependenciesSnippet}
+
+${getStaticPropsOpenSnippet}
+  ${retrieveSourceFileSnippet}
+
+  ${transformCodeSnippet}
+${getStaticPropsCloseSnippet}
+`.trim()
+
+const withReturnStatementSnippet = `
+${dependenciesSnippet}
+
+${getStaticPropsOpenSnippet}
+  ${retrieveSourceFileSnippet}
+
+  ${transformCodeSnippet}
 
   return {
     ...frontmatter,
@@ -35,14 +93,100 @@ export const getStaticProps = async ({ params }) => {
       html: String(body),
     },
   };
-};
+${getStaticPropsCloseSnippet}
 `.trim()
 
-export const ParsingUtility = () => {
+/* ----- Shared Components ----- */
+
+/* ----- Timeline Components ----- */
+
+const BlankSlate: TimelineComponent = () => {
+  return <div className="text-3xl"></div>
+}
+
+const ShowGetStaticProps: TimelineComponent = () => {
   return (
-    <div className="w-full h-full">
-      <div className="py-24">
-        <h2 className="text-7xl text-center mb-8 font-bold">
+    <div className="text-3xl leading-normal">
+      <SyntaxHighlighter language="javascript">
+        {getStaticPropsSnippet}
+      </SyntaxHighlighter>
+    </div>
+  )
+}
+
+const RetrieveSourceFile: TimelineComponent = () => {
+  return (
+    <div className="text-3xl leading-normal">
+      <SyntaxHighlighter language="javascript" highlightLines={[2, 3]}>
+        {withRetrieveSourceFileSnippet}
+      </SyntaxHighlighter>
+    </div>
+  )
+}
+
+const AddDependencies: TimelineComponent = () => {
+  return (
+    <div className="leading-normal" style={{ fontSize: "28px" }}>
+      <SyntaxHighlighter
+        language="javascript"
+        highlightLines={[1, 2, 3, 4, 5, 6, 7]}
+      >
+        {withDependenciesSnippet}
+      </SyntaxHighlighter>
+    </div>
+  )
+}
+
+const AddTransformCode: TimelineComponent = () => {
+  return (
+    <div className="leading-normal" style={{ fontSize: "15px" }}>
+      <SyntaxHighlighter
+        language="javascript"
+        highlightLines={[13, 14, 16, 17, 18, 19, 20, 21, 23]}
+      >
+        {withTransformCodeSnippet}
+      </SyntaxHighlighter>
+    </div>
+  )
+}
+
+const AddReturnStatement: TimelineComponent = () => {
+  return (
+    <div className="leading-normal" style={{ fontSize: "10px" }}>
+      <SyntaxHighlighter
+        language="javascript"
+        highlightLines={[25, 26, 27, 28, 29, 30, 30, 31, 32]}
+      >
+        {withReturnStatementSnippet}
+      </SyntaxHighlighter>
+    </div>
+  )
+}
+
+export const Timeline = {
+  BlankSlate,
+  ShowGetStaticProps,
+  RetrieveSourceFile,
+  AddDependencies,
+  AddTransformCode,
+  AddReturnStatement,
+}
+
+/* ----- Sequence Control ----- */
+
+export const Sequence: SequenceComponent = ({ timeline }) => {
+  const { Component, startingFrame, currentFrame, lastFrame, fps } =
+    useTimeline(timeline)
+
+  const opacity = useSequenceFade()
+
+  return (
+    <div className="w-full h-full" style={{ opacity }}>
+      <div className="pt-12 pb-24">
+        <span className="block mb-10">
+          <NextPlusMarkdown />
+        </span>
+        <h2 className="text-7xl text-center font-bold mb-8">
           Build Parsing Utility
         </h2>
         <code className="block text-center text-3xl text-lightGray">
@@ -50,13 +194,16 @@ export const ParsingUtility = () => {
         </code>
       </div>
       <div className="px-48 relative">
-        <div className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12">
-          <SyntaxHighlighter language="javascript">
-            {dependencies}
-          </SyntaxHighlighter>
-          <SyntaxHighlighter language="javascript">
-            {postPreview}
-          </SyntaxHighlighter>
+        <div
+          className="p-12 rounded-xl bg-gray mb-12 overflow-hidden"
+          style={{ height: "620px" }}
+        >
+          <Component
+            startingFrame={startingFrame}
+            currentFrame={currentFrame}
+            lastFrame={lastFrame}
+            fps={fps}
+          />
         </div>
       </div>
     </div>

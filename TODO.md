@@ -1,3 +1,7 @@
+TODO:
+
+- [ ] Don't fade out between sequences that can stay tied together. Keep relevant pieces on screen.
+
 Abstraction opportunities:
 
 - [ ] `interpolate` that assumes `extrapolateRight: clamp` as the only option.

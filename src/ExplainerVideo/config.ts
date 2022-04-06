@@ -138,11 +138,37 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextMarkdown.ParsingUtility,
-  //   durationInFrames: 18 * 30,
-  //   audioSrc: NextMarkdownAudio.ParsingUtility,
-  // },
+  {
+    component: NextMarkdown.ParsingUtility.Sequence,
+    durationInFrames: 18 * 30,
+    audioSrc: NextMarkdownAudio.ParsingUtility,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextMarkdown.ParsingUtility.Timeline.BlankSlate,
+      },
+      {
+        frame: 2 * 30,
+        component: NextMarkdown.ParsingUtility.Timeline.ShowGetStaticProps,
+      },
+      {
+        frame: 4 * 30,
+        component: NextMarkdown.ParsingUtility.Timeline.RetrieveSourceFile,
+      },
+      {
+        frame: 6 * 30,
+        component: NextMarkdown.ParsingUtility.Timeline.AddDependencies,
+      },
+      {
+        frame: 8 * 30,
+        component: NextMarkdown.ParsingUtility.Timeline.AddTransformCode,
+      },
+      {
+        frame: 10 * 30,
+        component: NextMarkdown.ParsingUtility.Timeline.AddReturnStatement,
+      },
+    ],
+  },
   // {
   //   component: NextMarkdown.Challenges,
   //   durationInFrames: 56 * 30,

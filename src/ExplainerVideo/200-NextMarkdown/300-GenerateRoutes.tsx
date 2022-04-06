@@ -1,4 +1,3 @@
-import { useCurrentFrame, interpolate } from "remotion"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
 import {
   useSequenceFade,
