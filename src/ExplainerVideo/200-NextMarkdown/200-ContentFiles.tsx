@@ -203,17 +203,18 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
-  const opacity = useSequenceFade()
+  const sequenceOpacity = useSequenceFade("in")
+  const contentOpacity = useSequenceFade("out")
 
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full" style={{ opacity: sequenceOpacity }}>
       <div className="pt-12 pb-24">
         <span className="block mb-10">
           <NextPlusMarkdown />
         </span>
         <h2 className="text-7xl text-center font-bold">Content Source Files</h2>
       </div>
-      <div className="py-24 px-24 relative">
+      <div className="py-24 px-24 relative" style={{ opacity: contentOpacity }}>
         <Component
           startingFrame={startingFrame}
           currentFrame={currentFrame}

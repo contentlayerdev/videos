@@ -124,7 +124,7 @@ const HighlightFilePaths: TimelineComponent = () => {
   )
 }
 
-const HighlightPageUrlPaths: TimelineComponent = () => {
+const HighlightPageUrlPaths: TimelineComponent = (props) => {
   return (
     <>
       <SequenceHeader />
@@ -148,10 +148,8 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
-  const opacity = useSequenceFade()
-
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full">
       <Component
         startingFrame={startingFrame}
         currentFrame={currentFrame}

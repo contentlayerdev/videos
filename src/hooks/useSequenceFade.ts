@@ -9,7 +9,7 @@ import { interpolate, useCurrentFrame, useVideoConfig } from "remotion"
  */
 export function useSequenceFade(
   fadeDirection: "in" | "out" | "both" = "both",
-  fadeDuration: number = 0.5
+  fadeDuration: number = 0.25
 ): number {
   const currentFrame = useCurrentFrame()
   const { durationInFrames, fps } = useVideoConfig()

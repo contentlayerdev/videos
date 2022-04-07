@@ -179,10 +179,10 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
-  const opacity = useSequenceFade()
+  const contentOpacity = useSequenceFade()
 
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full">
       <div className="pt-12 pb-24">
         <span className="block mb-10">
           <NextPlusMarkdown />
@@ -194,7 +194,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
           pages/post/[slug].jsx
         </code>
       </div>
-      <div className="px-48 relative">
+      <div className="px-48 relative" style={{ opacity: contentOpacity }}>
         <div
           className="p-12 rounded-xl bg-gray mb-12 overflow-hidden"
           style={{ height: "620px" }}
