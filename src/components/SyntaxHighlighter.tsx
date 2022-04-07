@@ -9,10 +9,12 @@ export const SyntaxHighlighter = ({
   language,
   children,
   highlightLines = [],
+  wrapText = true,
   ...props
 }: {
   language: string
   children: string
+  wrapText?: boolean
   highlightLines?: number[]
 }) => {
   const resolveLineHighlight = (line: number): DataHighlightProps => {
@@ -29,6 +31,7 @@ export const SyntaxHighlighter = ({
       lineNumberStyle={() => ({ display: "none" })}
       showLineNumbers={true}
       lineProps={resolveLineHighlight}
+      codeTagProps={{ className: wrapText ? "" : "no-wrap" }}
       {...props}
     >
       {children}

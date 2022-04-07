@@ -77,6 +77,7 @@ ${getStaticPropsOpenSnippet}
 ${getStaticPropsCloseSnippet}
 `.trim()
 
+// Also used by a later sequence.
 export const withReturnStatementSnippet = `
 ${dependenciesSnippet}
 

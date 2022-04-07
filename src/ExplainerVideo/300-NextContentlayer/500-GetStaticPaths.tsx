@@ -76,7 +76,7 @@ const ShowExistingCode: TimelineComponent = () => {
 const ShowDataImport: TimelineComponent = () => {
   return (
     <CodeSnippet>
-      <SyntaxHighlighter language="javascript">
+      <SyntaxHighlighter language="javascript" highlightLines={[1]}>
         {contentlayerImports}
       </SyntaxHighlighter>
       <span className="block opacity-50">

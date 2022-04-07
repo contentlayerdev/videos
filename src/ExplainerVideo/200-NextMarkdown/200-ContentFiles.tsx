@@ -23,7 +23,8 @@ type TimelineComponent = React.FC<TimelineComponentProps>
 
 /* ----- Code Snippets ----- */
 
-const contentTreeSnippet = `
+// Also used by a later sequence.
+export const contentTreeSnippet = `
 posts/
 ├── introducing-contentlayer.md
 ├── what-is-contentlayer.md

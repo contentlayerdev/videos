@@ -18,6 +18,7 @@ type TimelineComponent = React.FC<TimelineComponentProps>
 
 /* ----- Code Snippets ----- */
 
+// Also used by a later sequence.
 export const generatePagePathsSnippet = `
 export async function getStaticPaths = async () => {
   const postsDir = path.join(process.cwd(), "../posts");

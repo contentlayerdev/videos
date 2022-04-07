@@ -6,4 +6,8 @@
   pre > code {
     white-space: pre-wrap !important;
   }
+
+  pre > code.no-wrap {
+    white-space: pre !important;
+  }
 }

@@ -291,11 +291,54 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextContentlayer.ContentTransformation,
-  //   durationInFrames: 21 * 30,
-  //   audioSrc: NextContentlayerAudio.ContentTransformation,
-  // },
+  {
+    component: NextContentlayer.ContentTransformation.Sequence,
+    durationInFrames: 21 * 30,
+    audioSrc: NextContentlayerAudio.ContentTransformation,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.ShowContentFiles,
+      },
+      {
+        frame: 2 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.ShowBuildArrow,
+      },
+      {
+        frame: 4 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.ShowGeneratedFiles,
+      },
+      {
+        frame: 6 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.MoveGeneratedFiles,
+      },
+      {
+        frame: 8 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.ShowEmptyPreview,
+      },
+      {
+        frame: 10 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.ShowDataPreview,
+      },
+      {
+        frame: 12 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline.ShowDataExportPreview,
+      },
+      {
+        frame: 14 * 30,
+        component:
+          NextContentlayer.ContentTransformation.Timeline
+            .ShowTypeDefinitionExample,
+      },
+    ],
+  },
   {
     name: "[CL + MD] Generate Post Paths",
     component: NextContentlayer.GetStaticPaths.Sequence,
