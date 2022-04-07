@@ -396,11 +396,37 @@ const staticSequenceConfig: SequenceConfig[] = [
     durationInFrames: 54 * 30,
     audioSrc: NextContentlayerAudio.Benefits,
   },
-  // {
-  //   component: NextContentlayer.Outro,
-  //   durationInFrames: 5 * 30,
-  //   audioSrc: NextContentlayerAudio.Outro,
-  // },
+  {
+    component: NextContentlayer.Outro.Sequence,
+    durationInFrames: 12 * 30,
+    audioSrc: NextContentlayerAudio.Outro,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextContentlayer.Outro.Timeline.BlankSlate,
+      },
+      {
+        frame: 2 * 30,
+        component: NextContentlayer.Outro.Timeline.ShowTutorialImage,
+      },
+      {
+        frame: 4 * 30,
+        component: NextContentlayer.Outro.Timeline.ShowExamplesImage,
+      },
+      {
+        frame: 6 * 30,
+        component: NextContentlayer.Outro.Timeline.ShowGettingStartedImage,
+      },
+      {
+        frame: 8 * 30,
+        component: NextContentlayer.Outro.Timeline.ShowCommunityImage,
+      },
+      {
+        frame: 10 * 30,
+        component: NextContentlayer.Outro.Timeline.ShowFinalScreen,
+      },
+    ],
+  },
 ]
 
 // Add from prop by finding the total duration passed in previous sequences.
