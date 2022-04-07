@@ -392,9 +392,35 @@ const staticSequenceConfig: SequenceConfig[] = [
     ],
   },
   {
-    component: NextContentlayer.Benefits.Benefits,
+    component: NextContentlayer.Benefits.Sequence,
     durationInFrames: 54 * 30,
     audioSrc: NextContentlayerAudio.Benefits,
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: NextContentlayer.Benefits.Timeline.EmptyPoints,
+      },
+      {
+        frame: 2 * 30,
+        component: NextContentlayer.Benefits.Timeline.Point01,
+      },
+      {
+        frame: 4 * 30,
+        component: NextContentlayer.Benefits.Timeline.Point02,
+      },
+      {
+        frame: 6 * 30,
+        component: NextContentlayer.Benefits.Timeline.Point03,
+      },
+      {
+        frame: 8 * 30,
+        component: NextContentlayer.Benefits.Timeline.Point04,
+      },
+      {
+        frame: 10 * 30,
+        component: NextContentlayer.Benefits.Timeline.Point05,
+      },
+    ],
   },
   {
     component: NextContentlayer.Outro.Sequence,

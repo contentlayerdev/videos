@@ -1,11 +1,14 @@
-export const PositiveIcon: React.FC<{}> = () => {
+export const PositiveIcon: React.FC<{
+  style?: React.CSSProperties
+  className?: string
+}> = ({ style, className }) => {
   return (
     <svg
-      width="73"
-      height="73"
       viewBox="0 0 73 73"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style ?? {}}
+      className={className ?? ""}
     >
       <path
         fillRule="evenodd"
