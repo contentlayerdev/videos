@@ -1,9 +1,17 @@
 TODO:
 
-- [ ] Don't fade out between sequences that can stay tied together. Keep relevant pieces on screen.
+- [ ] 200-200 -> 200-300: Fade the title only
+- [ ] 200-300 -> 200-400: Keep all the base elements exactly the same and only fade the title. Keep the filename and code background in place.
+- [ ] 200-400 -> 200-500: Fade out the filename and code block, fade in the subtitle (title doesn't change)
+- [ ] 300-300 -> 300-400: Fade out everything except the logo
+- [ ] 300-400 -> 300-500: Fade out everything except the logo
+- [ ] 300-500 -> 300-600: Only fade the title. Keep the filename and code block, like in the one above.
+- [ ] 300-600 -> 300-700: Fade out everything except the logo
+- [ ] 300-700 -> 300-800: Fade out everything except the logo
 
 Abstraction opportunities:
 
+- [ ] Idea -> Shared components for each section to make fading easier to control and to keep elements in the same place
 - [ ] `interpolate` that assumes `extrapolateRight: clamp` as the only option.
 - [ ] Code frame styles. The functionality may not make sense, but maybe the classes. Maybe it's just a Tailwind component?
 - [ ] Hook for simple transitions?
