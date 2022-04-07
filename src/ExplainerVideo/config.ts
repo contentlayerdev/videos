@@ -391,11 +391,11 @@ const staticSequenceConfig: SequenceConfig[] = [
       },
     ],
   },
-  // {
-  //   component: NextContentlayer.Benefits,
-  //   durationInFrames: 54 * 30,
-  //   audioSrc: NextContentlayerAudio.Benefits,
-  // },
+  {
+    component: NextContentlayer.Benefits.Benefits,
+    durationInFrames: 54 * 30,
+    audioSrc: NextContentlayerAudio.Benefits,
+  },
   // {
   //   component: NextContentlayer.Outro,
   //   durationInFrames: 5 * 30,

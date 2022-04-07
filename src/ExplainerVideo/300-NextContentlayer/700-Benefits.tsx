@@ -1,4 +1,4 @@
-import { PositiveIcon } from "../../assets"
+import { Icon } from "../../assets"
 
 const items = [
   "Type-safe content schema",
@@ -22,7 +22,7 @@ export const Benefits = () => {
           return (
             <div key={idx} className="inline-flex items-start">
               <span className="block mr-8 mt-2 text-green">
-                <PositiveIcon />
+                <Icon.PositiveIcon />
               </span>
               <span className="text-5xl leading-normal">{item}</span>
             </div>
