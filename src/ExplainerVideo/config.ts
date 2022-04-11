@@ -16,13 +16,13 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[Intro] Title",
     component: Intro.Intro.Sequence,
-    durationInFrames: 4 * 30,
+    durationInFrames: 6 * 30,
     audioSrc: IntroAudio.Intro,
   },
   {
     name: "[Intro] Modern Web Stack",
     component: Intro.ModernWebStack.Sequence,
-    durationInFrames: 30 * 30,
+    durationInFrames: 29 * 30,
     audioSrc: IntroAudio.ModernWebStack,
     timeline: [
       {
@@ -30,40 +30,36 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: Intro.ModernWebStack.Timeline.Base,
       },
       {
-        frame: 1 * 30,
+        frame: 10 * 30,
         component: Intro.ModernWebStack.Timeline.HighlightNext,
       },
       {
-        frame: 2 * 30,
+        frame: 11 * 30,
         component: Intro.ModernWebStack.Timeline.HighlightRemix,
       },
       {
-        frame: 3 * 30,
+        frame: 12 * 30,
         component: Intro.ModernWebStack.Timeline.HighlightSvelte,
       },
       {
-        frame: 4 * 30,
+        frame: 13 * 30,
         component: Intro.ModernWebStack.Timeline.HighlightAstro,
       },
       {
-        frame: 5 * 30,
+        frame: 14 * 30,
         component: Intro.ModernWebStack.Timeline.Base,
       },
       {
-        frame: 6 * 30,
+        frame: 15 * 30,
         component: Intro.ModernWebStack.Timeline.ShowPages,
       },
       {
-        frame: 8 * 30,
+        frame: 20.5 * 30,
         component: Intro.ModernWebStack.Timeline.ShowContent,
       },
       {
-        frame: 10 * 30,
+        frame: 25 * 30,
         component: Intro.ModernWebStack.Timeline.ShowProcessor,
-      },
-      {
-        frame: 12 * 30,
-        component: Intro.ModernWebStack.Timeline.ShowEverything,
       },
     ],
   },
@@ -71,13 +67,13 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[Next + MD] Intro",
     component: NextMarkdown.Intro.Sequence,
-    durationInFrames: 7 * 30,
+    durationInFrames: 8 * 30,
     audioSrc: NextMarkdownAudio.Intro,
   },
   {
     name: "[Next + MD] Content Files",
     component: NextMarkdown.ContentFiles.Sequence,
-    durationInFrames: 14 * 30,
+    durationInFrames: 15 * 30,
     audioSrc: NextMarkdownAudio.ContentFiles,
     timeline: [
       {
@@ -85,23 +81,23 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextMarkdown.ContentFiles.Timeline.EmptyFileTree,
       },
       {
-        frame: 2 * 30,
+        frame: 4 * 30,
         component: NextMarkdown.ContentFiles.Timeline.FileTreeWithFiles,
       },
       {
-        frame: 4 * 30,
+        frame: 7 * 30,
         component: NextMarkdown.ContentFiles.Timeline.SlideFileTree,
       },
       {
-        frame: 5 * 30,
+        frame: 8 * 30,
         component: NextMarkdown.ContentFiles.Timeline.EmptyPost,
       },
       {
-        frame: 5.5 * 30,
+        frame: 9 * 30,
         component: NextMarkdown.ContentFiles.Timeline.AddPostFrontmatter,
       },
       {
-        frame: 7.5 * 30,
+        frame: 12 * 30,
         component: NextMarkdown.ContentFiles.Timeline.AddPostBody,
       },
     ],
@@ -117,23 +113,19 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextMarkdown.GenerateRoutes.Timeline.BlankSlate,
       },
       {
-        frame: 2 * 30,
+        frame: 3 * 30,
         component: NextMarkdown.GenerateRoutes.Timeline.ShowFilename,
       },
       {
-        frame: 4 * 30,
+        frame: 5 * 30,
         component: NextMarkdown.GenerateRoutes.Timeline.ShowCodeSnippet,
       },
       {
-        frame: 6 * 30,
-        component: NextMarkdown.GenerateRoutes.Timeline.HighlightGetStaticPaths,
-      },
-      {
-        frame: 8 * 30,
+        frame: 12 * 30,
         component: NextMarkdown.GenerateRoutes.Timeline.HighlightFilePaths,
       },
       {
-        frame: 10 * 30,
+        frame: 15 * 30,
         component: NextMarkdown.GenerateRoutes.Timeline.HighlightPageUrlPaths,
       },
     ],
@@ -141,7 +133,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[Next + MD] Parsing Utility",
     component: NextMarkdown.ParsingUtility.Sequence,
-    durationInFrames: 18 * 30,
+    durationInFrames: 19 * 30,
     audioSrc: NextMarkdownAudio.ParsingUtility,
     timeline: [
       {
@@ -149,23 +141,23 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextMarkdown.ParsingUtility.Timeline.BlankSlate,
       },
       {
-        frame: 2 * 30,
+        frame: 2.5 * 30,
         component: NextMarkdown.ParsingUtility.Timeline.ShowGetStaticProps,
       },
       {
-        frame: 4 * 30,
+        frame: 7 * 30,
         component: NextMarkdown.ParsingUtility.Timeline.RetrieveSourceFile,
       },
       {
-        frame: 6 * 30,
+        frame: 12 * 30,
         component: NextMarkdown.ParsingUtility.Timeline.AddDependencies,
       },
       {
-        frame: 8 * 30,
+        frame: 14 * 30,
         component: NextMarkdown.ParsingUtility.Timeline.AddTransformCode,
       },
       {
-        frame: 10 * 30,
+        frame: 17 * 30,
         component: NextMarkdown.ParsingUtility.Timeline.AddReturnStatement,
       },
     ],
@@ -173,7 +165,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[Next + MD] Challenges",
     component: NextMarkdown.Challenges.Sequence,
-    durationInFrames: 56 * 30,
+    durationInFrames: 50 * 30,
     audioSrc: NextMarkdownAudio.Challenges,
     timeline: [
       {
@@ -181,27 +173,27 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextMarkdown.Challenges.Timeline.EmptyPoints,
       },
       {
-        frame: 2 * 30,
+        frame: 16 * 30,
         component: NextMarkdown.Challenges.Timeline.Point01,
       },
       {
-        frame: 4 * 30,
+        frame: 20 * 30,
         component: NextMarkdown.Challenges.Timeline.Point02,
       },
       {
-        frame: 6 * 30,
+        frame: 24 * 30,
         component: NextMarkdown.Challenges.Timeline.Point03,
       },
       {
-        frame: 8 * 30,
+        frame: 33 * 30,
         component: NextMarkdown.Challenges.Timeline.Point04,
       },
       {
-        frame: 10 * 30,
+        frame: 40 * 30,
         component: NextMarkdown.Challenges.Timeline.Point05,
       },
       {
-        frame: 12 * 30,
+        frame: 45 * 30,
         component: NextMarkdown.Challenges.Timeline.Point06,
       },
     ],
@@ -216,7 +208,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[CL + MD] Modern Stack",
     component: NextContentlayer.ModernWebStack.Sequence,
-    durationInFrames: 10 * 30,
+    durationInFrames: 11 * 30,
     audioSrc: NextContentlayerAudio.ModernWebStack,
     timeline: [
       {
@@ -224,7 +216,7 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.ModernWebStack.Timeline.EmptyBody,
       },
       {
-        frame: 2 * 30,
+        frame: 0.5 * 30,
         component: NextContentlayer.ModernWebStack.Timeline.ShowProcessor,
       },
       {
@@ -232,11 +224,11 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.ModernWebStack.Timeline.ShowContent,
       },
       {
-        frame: 6 * 30,
+        frame: 5.5 * 30,
         component: NextContentlayer.ModernWebStack.Timeline.ShowPages,
       },
       {
-        frame: 8 * 30,
+        frame: 9 * 30,
         component: NextContentlayer.ModernWebStack.Timeline.ShowEverything,
       },
     ],
@@ -252,48 +244,44 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.Configuration.Timeline.BlankSlate,
       },
       {
-        frame: 2 * 30,
+        frame: 3.5 * 30,
         component:
           NextContentlayer.Configuration.Timeline.ShowContentlayerConfig,
       },
       {
-        frame: 4 * 30,
-        component: NextContentlayer.Configuration.Timeline.HighlightExport,
-      },
-      {
-        frame: 6 * 30,
+        frame: 11 * 30,
         component: NextContentlayer.Configuration.Timeline.HighlightPost,
       },
       {
-        frame: 8 * 30,
+        frame: 13 * 30,
         component: NextContentlayer.Configuration.Timeline.HighlightTitleField,
       },
       {
-        frame: 10 * 30,
-        component: NextContentlayer.Configuration.Timeline.HighlightBodyField,
-      },
-      {
-        frame: 12 * 30,
-        component: NextContentlayer.Configuration.Timeline.HighlightFilePath,
-      },
-      {
-        frame: 14 * 30,
-        component: NextContentlayer.Configuration.Timeline.HighlightExport,
+        frame: 13.75 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightDateField,
       },
       {
         frame: 16 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightFilePath,
+      },
+      {
+        frame: 23 * 30,
+        component: NextContentlayer.Configuration.Timeline.HighlightExport,
+      },
+      {
+        frame: 26 * 30,
         component:
           NextContentlayer.Configuration.Timeline.HideContentlayerConfig,
       },
       {
-        frame: 18 * 30,
+        frame: 28 * 30,
         component: NextContentlayer.Configuration.Timeline.ShowNextConfig,
       },
     ],
   },
   {
     component: NextContentlayer.ContentTransformation.Sequence,
-    durationInFrames: 21 * 30,
+    durationInFrames: 20 * 30,
     audioSrc: NextContentlayerAudio.ContentTransformation,
     timeline: [
       {
@@ -302,22 +290,22 @@ const staticSequenceConfig: SequenceConfig[] = [
           NextContentlayer.ContentTransformation.Timeline.ShowContentFiles,
       },
       {
-        frame: 2 * 30,
+        frame: 3 * 30,
         component:
           NextContentlayer.ContentTransformation.Timeline.ShowBuildArrow,
       },
       {
-        frame: 4 * 30,
+        frame: 5.5 * 30,
         component:
           NextContentlayer.ContentTransformation.Timeline.ShowGeneratedFiles,
       },
       {
-        frame: 6 * 30,
+        frame: 8 * 30,
         component:
           NextContentlayer.ContentTransformation.Timeline.MoveGeneratedFiles,
       },
       {
-        frame: 8 * 30,
+        frame: 9 * 30,
         component:
           NextContentlayer.ContentTransformation.Timeline.ShowEmptyPreview,
       },
@@ -332,7 +320,7 @@ const staticSequenceConfig: SequenceConfig[] = [
           NextContentlayer.ContentTransformation.Timeline.ShowDataExportPreview,
       },
       {
-        frame: 14 * 30,
+        frame: 15 * 30,
         component:
           NextContentlayer.ContentTransformation.Timeline
             .ShowTypeDefinitionExample,
@@ -342,7 +330,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[CL + MD] Generate Post Paths",
     component: NextContentlayer.GetStaticPaths.Sequence,
-    durationInFrames: 8 * 30,
+    durationInFrames: 8.5 * 30,
     audioSrc: NextContentlayerAudio.GetStaticPaths,
     timeline: [
       {
@@ -354,12 +342,7 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.GetStaticPaths.Timeline.ShowDataImport,
       },
       {
-        frame: 4 * 30,
-        component:
-          NextContentlayer.GetStaticPaths.Timeline.ReplaceGetStaticPaths,
-      },
-      {
-        frame: 6 * 30,
+        frame: 5.5 * 30,
         component: NextContentlayer.GetStaticPaths.Timeline.HighlightPostsMap,
       },
     ],
@@ -367,7 +350,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[CL + MD] Retrieve Page Data",
     component: NextContentlayer.GetStaticProps.Sequence,
-    durationInFrames: 11 * 30,
+    durationInFrames: 11.5 * 30,
     audioSrc: NextContentlayerAudio.GetStaticProps,
     timeline: [
       {
@@ -375,17 +358,17 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.GetStaticProps.Timeline.ShowExistingCode,
       },
       {
-        frame: 2 * 30,
+        frame: 3 * 30,
         component:
           NextContentlayer.GetStaticProps.Timeline.ReplaceGetStaticProps,
       },
       {
-        frame: 4 * 30,
+        frame: 6 * 30,
         component:
           NextContentlayer.GetStaticProps.Timeline.HighlightDataRetrieval,
       },
       {
-        frame: 6 * 30,
+        frame: 9 * 30,
         component:
           NextContentlayer.GetStaticProps.Timeline.HighlightReturnStatement,
       },
@@ -393,7 +376,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   },
   {
     component: NextContentlayer.Benefits.Sequence,
-    durationInFrames: 54 * 30,
+    durationInFrames: 25 * 30,
     audioSrc: NextContentlayerAudio.Benefits,
     timeline: [
       {
@@ -401,30 +384,30 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.Benefits.Timeline.EmptyPoints,
       },
       {
-        frame: 2 * 30,
+        frame: 6 * 30,
         component: NextContentlayer.Benefits.Timeline.Point01,
       },
       {
-        frame: 4 * 30,
+        frame: 11 * 30,
         component: NextContentlayer.Benefits.Timeline.Point02,
       },
       {
-        frame: 6 * 30,
+        frame: 14 * 30,
         component: NextContentlayer.Benefits.Timeline.Point03,
       },
       {
-        frame: 8 * 30,
+        frame: 18 * 30,
         component: NextContentlayer.Benefits.Timeline.Point04,
       },
       {
-        frame: 10 * 30,
+        frame: 21 * 30,
         component: NextContentlayer.Benefits.Timeline.Point05,
       },
     ],
   },
   {
     component: NextContentlayer.Outro.Sequence,
-    durationInFrames: 12 * 30,
+    durationInFrames: 27 * 30,
     audioSrc: NextContentlayerAudio.Outro,
     timeline: [
       {
@@ -432,23 +415,23 @@ const staticSequenceConfig: SequenceConfig[] = [
         component: NextContentlayer.Outro.Timeline.BlankSlate,
       },
       {
-        frame: 2 * 30,
+        frame: 6 * 30,
         component: NextContentlayer.Outro.Timeline.ShowTutorialImage,
       },
       {
-        frame: 4 * 30,
+        frame: 9 * 30,
         component: NextContentlayer.Outro.Timeline.ShowExamplesImage,
       },
       {
-        frame: 6 * 30,
+        frame: 12 * 30,
         component: NextContentlayer.Outro.Timeline.ShowGettingStartedImage,
       },
       {
-        frame: 8 * 30,
+        frame: 18 * 30,
         component: NextContentlayer.Outro.Timeline.ShowCommunityImage,
       },
       {
-        frame: 10 * 30,
+        frame: 23 * 30,
         component: NextContentlayer.Outro.Timeline.ShowFinalScreen,
       },
     ],
