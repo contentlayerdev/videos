@@ -53,26 +53,37 @@ const SequenceTemplate: React.FC<{
   codeOpacity?: number
   highlightLines?: number[]
 }> = (props) => {
+  const fadeIn = useSequenceFade("in")
+  const fadeBoth = useSequenceFade()
+
   return (
     <>
       <div className="pt-12">
-        <span className="block mb-8 h-16 opacity-75 text-primary">
+        <span
+          className="block mb-8 h-16 text-primary"
+          style={{ opacity: fadeIn }}
+        >
           <Logo.ContentlayerLogo />
         </span>
-        <h2 className="text-7xl text-center font-bold mb-8">
+        <h2
+          className="text-7xl text-center font-bold mb-8"
+          style={{ opacity: fadeBoth }}
+        >
           Configure Contentlayer
         </h2>
         {props.filename && (
           <code
             className="block text-center text-3xl text-lightGray"
-            style={{ opacity: props.filenameOpacity ?? 1 }}
+            style={{
+              opacity: fadeBoth !== 1 ? fadeBoth : props.filenameOpacity ?? 1,
+            }}
           >
             {props.filename}
           </code>
         )}
       </div>
       {props.codeSnippet && (
-        <div className="px-48 py-12 relative">
+        <div className="px-48 py-12 relative" style={{ opacity: fadeBoth }}>
           <div
             className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12"
             style={{ height: "670px" }}
@@ -190,10 +201,8 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
-  const opacity = useSequenceFade()
-
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full">
       <Component
         startingFrame={startingFrame}
         currentFrame={currentFrame}

@@ -1,14 +1,3 @@
-TODO:
-
-- [x] 200-200 -> 200-300: Fade the title only
-- [x] 200-300 -> 200-400: Keep all the base elements exactly the same and only fade the title. Keep the filename and code background in place.
-- [x] 200-400 -> 200-500: Fade out the filename and code block, fade in the subtitle (title doesn't change)
-- [ ] 300-300 -> 300-400: Fade out everything except the logo
-- [ ] 300-400 -> 300-500: Fade out everything except the logo
-- [ ] 300-500 -> 300-600: Only fade the title. Keep the filename and code block, like in the one above.
-- [ ] 300-600 -> 300-700: Fade out everything except the logo
-- [ ] 300-700 -> 300-800: Fade out everything except the logo
-
 Abstraction opportunities:
 
 - [ ] Idea -> Shared components for each section to make fading easier to control and to keep elements in the same place

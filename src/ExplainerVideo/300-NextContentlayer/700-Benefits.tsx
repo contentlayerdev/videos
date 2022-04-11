@@ -104,19 +104,19 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const opacity = useSequenceFade()
 
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full">
       <div className="pt-12 pb-24">
-        <span className="block mb-8 h-16 opacity-75 text-primary">
+        <span className="block mb-8 h-16 text-primary">
           <Logo.ContentlayerLogo />
         </span>
-        <h2 className="text-7xl text-center font-bold mb-8">
+        <h2 className="text-7xl text-center font-bold mb-8" style={{ opacity }}>
           Contentlayer Benefits
         </h2>
-        <h3 className="block text-center text-4xl">
+        <h3 className="block text-center text-4xl" style={{ opacity }}>
           Contentlayer provides the following benefits:
         </h3>
       </div>
-      <div className="px-12 py-8">
+      <div className="px-12 py-8" style={{ opacity }}>
         <Component
           startingFrame={startingFrame}
           currentFrame={currentFrame}

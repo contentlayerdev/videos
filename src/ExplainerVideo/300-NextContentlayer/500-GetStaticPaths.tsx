@@ -31,12 +31,14 @@ export async function getStaticPaths() {
 /* ----- Shared Components ----- */
 
 const CodeSnippet: React.FC = ({ children }) => {
+  const opacity = useSequenceFade()
+
   return (
     <div
-      className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12"
+      className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12 overflow-hidden"
       style={{ height: "696px" }}
     >
-      {children}
+      <div style={{ opacity }}>{children}</div>
     </div>
   )
 }
@@ -104,18 +106,22 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
+  const fadeIn = useSequenceFade("in")
   const opacity = useSequenceFade()
 
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full">
       <div className="pt-12">
-        <span className="block mb-8 h-16 opacity-75 text-primary">
+        <span className="block mb-8 h-16 text-primary">
           <Logo.ContentlayerLogo />
         </span>
-        <h2 className="text-7xl text-center font-bold mb-8">
+        <h2 className="text-7xl text-center font-bold mb-8" style={{ opacity }}>
           Generate Post Paths
         </h2>
-        <code className="block text-center text-3xl text-lightGray">
+        <code
+          className="block text-center text-3xl text-lightGray"
+          style={{ opacity: fadeIn }}
+        >
           pages/post/[slug].jsx
         </code>
       </div>

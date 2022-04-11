@@ -312,17 +312,19 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const opacity = useSequenceFade()
 
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full">
       <div className="pt-12">
-        <span className="block mb-8 h-16 opacity-75 text-primary">
+        <span className="block mb-8 h-16 text-primary">
           <Logo.ContentlayerLogo />
         </span>
-        <h2 className="text-7xl text-center font-bold mb-8">Generated Files</h2>
-        <h3 className="block text-center text-4xl">
+        <h2 className="text-7xl text-center font-bold mb-8" style={{ opacity }}>
+          Generated Files
+        </h2>
+        <h3 className="block text-center text-4xl" style={{ opacity }}>
           Contentlayer Transforms Content into Data
         </h3>
       </div>
-      <div className="py-24 px-24 relative">
+      <div className="py-24 px-24 relative" style={{ opacity }}>
         <Component
           startingFrame={startingFrame}
           currentFrame={currentFrame}
