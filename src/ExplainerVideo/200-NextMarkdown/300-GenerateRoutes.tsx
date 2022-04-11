@@ -1,3 +1,4 @@
+import { interpolate } from "remotion"
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter"
 import {
   useSequenceFade,
@@ -38,12 +39,17 @@ export async function getStaticPaths = async () => {
 const SequenceHeader: React.FC<{ filenameOpacity?: number }> = ({
   filenameOpacity = 1,
 }) => {
+  const titleOpacity = useSequenceFade("in")
+
   return (
     <div className="pt-12 pb-24">
       <span className="block mb-10">
         <NextPlusMarkdown />
       </span>
-      <h2 className="text-7xl text-center font-bold mb-8">
+      <h2
+        className="text-7xl text-center font-bold mb-8"
+        style={{ opacity: titleOpacity }}
+      >
         Generate Post Pages
       </h2>
       <code
@@ -64,8 +70,8 @@ const CodeSnippet: React.FC<{
   return (
     <div className="px-48 relative">
       <div
-        className="p-12 rounded-xl bg-gray text-3xl leading-normal mb-12 overflow-y-scroll"
-        style={{ opacity }}
+        className="p-12 rounded-xl text-3xl leading-normal bg-gray mb-12 overflow-hidden"
+        style={{ opacity, height: "620px" }}
       >
         <span className="block" style={{ opacity: codeOpacity }}>
           <SyntaxHighlighter
@@ -116,10 +122,17 @@ const HighlightFilePaths: TimelineComponent = () => {
 }
 
 const HighlightPageUrlPaths: TimelineComponent = (props) => {
+  const opacity = interpolate(
+    props.currentFrame,
+    [props.lastFrame - props.fps * 0.5, props.lastFrame],
+    [1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  )
+
   return (
     <>
       <SequenceHeader />
-      <CodeSnippet highlightLines={[4, 5, 6, 7, 8, 9]} />
+      <CodeSnippet highlightLines={[4, 5, 6, 7, 8, 9]} codeOpacity={opacity} />
     </>
   )
 }

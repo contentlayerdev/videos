@@ -108,10 +108,11 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
-  const opacity = useSequenceFade()
+  const fadeIn = useSequenceFade("in")
+  const fadeOut = useSequenceFade("out")
 
   return (
-    <div className="w-full h-full" style={{ opacity }}>
+    <div className="w-full h-full" style={{ opacity: fadeOut }}>
       <div className="pt-12 pb-24">
         <span className="block mb-10">
           <NextPlusMarkdown />
@@ -119,7 +120,9 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         <h2 className="text-7xl text-center font-bold mb-8">
           Build Parsing Utility
         </h2>
-        <h3 className="text-4xl text-center">Limitations &amp; Challenges</h3>
+        <h3 className="text-4xl text-center" style={{ opacity: fadeIn }}>
+          Limitations &amp; Challenges
+        </h3>
       </div>
       <div className="px-24 py-8">
         <Component

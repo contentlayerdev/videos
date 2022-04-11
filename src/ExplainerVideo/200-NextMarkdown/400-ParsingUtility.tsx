@@ -179,7 +179,8 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
-  const contentOpacity = useSequenceFade()
+  const fadeIn = useSequenceFade("in")
+  const fadeOut = useSequenceFade("out")
 
   return (
     <div className="w-full h-full">
@@ -187,24 +188,32 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         <span className="block mb-10">
           <NextPlusMarkdown />
         </span>
-        <h2 className="text-7xl text-center font-bold mb-8">
+        <h2
+          className="text-7xl text-center font-bold mb-8"
+          style={{ opacity: fadeIn }}
+        >
           Build Parsing Utility
         </h2>
-        <code className="block text-center text-3xl text-lightGray">
+        <code
+          className="block text-center text-3xl text-lightGray"
+          style={{ opacity: fadeOut }}
+        >
           pages/post/[slug].jsx
         </code>
       </div>
-      <div className="px-48 relative" style={{ opacity: contentOpacity }}>
+      <div className="px-48 relative" style={{ opacity: fadeOut }}>
         <div
           className="p-12 rounded-xl bg-gray mb-12 overflow-hidden"
           style={{ height: "620px" }}
         >
-          <Component
-            startingFrame={startingFrame}
-            currentFrame={currentFrame}
-            lastFrame={lastFrame}
-            fps={fps}
-          />
+          <div style={{ opacity: fadeIn }}>
+            <Component
+              startingFrame={startingFrame}
+              currentFrame={currentFrame}
+              lastFrame={lastFrame}
+              fps={fps}
+            />
+          </div>
         </div>
       </div>
     </div>

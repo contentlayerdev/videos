@@ -212,7 +212,12 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         <span className="block mb-10">
           <NextPlusMarkdown />
         </span>
-        <h2 className="text-7xl text-center font-bold">Content Source Files</h2>
+        <h2
+          className="text-7xl text-center font-bold"
+          style={{ opacity: contentOpacity }}
+        >
+          Content Source Files
+        </h2>
       </div>
       <div className="py-24 px-24 relative" style={{ opacity: contentOpacity }}>
         <Component
