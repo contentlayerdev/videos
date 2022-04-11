@@ -134,7 +134,7 @@ const HighlightTitleField: TimelineComponent = () => {
   return <HighlightedContentlayerConfig highlightLines={[7]} />
 }
 
-const HighlightBodyField: TimelineComponent = () => {
+const HighlightDateField: TimelineComponent = () => {
   return <HighlightedContentlayerConfig highlightLines={[8]} />
 }
 
@@ -178,7 +178,7 @@ export const Timeline = {
   HighlightExport,
   HighlightPost,
   HighlightTitleField,
-  HighlightBodyField,
+  HighlightDateField,
   HighlightFilePath,
   HideContentlayerConfig,
   ShowNextConfig,

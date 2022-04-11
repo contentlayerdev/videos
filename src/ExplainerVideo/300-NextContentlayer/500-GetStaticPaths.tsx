@@ -88,10 +88,6 @@ const ShowDataImport: TimelineComponent = () => {
   )
 }
 
-const ReplaceGetStaticPaths: TimelineComponent = () => {
-  return <FullCodeExample />
-}
-
 const HighlightPostsMap: TimelineComponent = () => {
   return <FullCodeExample highlightLines={[2, 3, 4]} />
 }
@@ -99,7 +95,6 @@ const HighlightPostsMap: TimelineComponent = () => {
 export const Timeline = {
   ShowExistingCode,
   ShowDataImport,
-  ReplaceGetStaticPaths,
   HighlightPostsMap,
 }
 

@@ -106,15 +106,6 @@ const ShowCodeSnippet: TimelineComponent = (props) => {
   )
 }
 
-const HighlightGetStaticPaths: TimelineComponent = () => {
-  return (
-    <>
-      <SequenceHeader />
-      <CodeSnippet highlightLines={[1]} />
-    </>
-  )
-}
-
 const HighlightFilePaths: TimelineComponent = () => {
   return (
     <>
@@ -137,7 +128,6 @@ export const Timeline = {
   BlankSlate,
   ShowFilename,
   ShowCodeSnippet,
-  HighlightGetStaticPaths,
   HighlightFilePaths,
   HighlightPageUrlPaths,
 }

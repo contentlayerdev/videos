@@ -243,20 +243,6 @@ const ShowProcessor: TimelineComponent = (props) => {
   )
 }
 
-const ShowEverything: TimelineComponent = (props) => {
-  return (
-    <>
-      <SequenceHeader timelineItem={props} />
-      <SequenceBody
-        timelineItem={props}
-        contentState={"visible"}
-        pagesState={"visible"}
-        processorState={"visible"}
-      />
-    </>
-  )
-}
-
 export const Timeline = {
   Base,
   HighlightNext,
@@ -266,7 +252,6 @@ export const Timeline = {
   ShowPages,
   ShowContent,
   ShowProcessor,
-  ShowEverything,
 }
 
 /* ----- Sequence Control ----- */

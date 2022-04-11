@@ -20,8 +20,8 @@ type TimelineComponent = React.FC<TimelineComponentProps>
 const positivePointTexts: string[] = [
   "Type-safe content schema",
   "Built-in validations",
-  "Live reloading after content update",
   "Caching and incremental regeneration",
+  "Live reloading after content update",
   "Scale to complex content relationships",
 ]
 
