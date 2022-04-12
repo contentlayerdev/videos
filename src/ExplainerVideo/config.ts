@@ -375,6 +375,20 @@ const staticSequenceConfig: SequenceConfig[] = [
     ],
   },
   {
+    component: NextContentlayer.Demo.Sequence,
+    durationInFrames: 112 * 30,
+    timeline: [
+      {
+        frame: 0,
+        component: NextContentlayer.Demo.Timeline.DemoTitle,
+      },
+      {
+        frame: 124,
+        component: NextContentlayer.Demo.Timeline.DemoVideo,
+      },
+    ],
+  },
+  {
     component: NextContentlayer.Benefits.Sequence,
     durationInFrames: 25 * 30,
     audioSrc: NextContentlayerAudio.Benefits,

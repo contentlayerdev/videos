@@ -20,7 +20,7 @@ export type SequenceConfig = {
   name?: string
   component: SequenceComponent
   durationInFrames: number
-  audioSrc: string
+  audioSrc?: string
   from?: number
   timeline?: TimelineItemConfig[]
 }

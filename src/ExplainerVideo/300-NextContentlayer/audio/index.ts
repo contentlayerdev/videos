@@ -4,8 +4,8 @@ import Configuration from "./300-Configuration.wav"
 import ContentTransformation from "./400-ContentTransformation.wav"
 import GetStaticPaths from "./500-GetStaticPaths.wav"
 import GetStaticProps from "./600-GetStaticProps.wav"
-import Benefits from "./700-Benefits.wav"
-import Outro from "./800-Outro.wav"
+import Benefits from "./800-Benefits.wav"
+import Outro from "./900-Outro.wav"
 
 export {
   Intro,

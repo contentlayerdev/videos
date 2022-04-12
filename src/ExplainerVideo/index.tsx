@@ -15,7 +15,7 @@ export const ExplainerVideo: React.FC<{}> = () => {
             name={sequence.name}
           >
             <SequenceComponent timeline={sequence.timeline ?? []} />
-            <Audio src={sequence.audioSrc} />
+            {sequence.audioSrc && <Audio src={sequence.audioSrc} />}
           </Sequence>
         )
       })}
