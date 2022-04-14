@@ -1,3 +1,4 @@
+import { Blank, TBD } from "../components"
 import type { SequenceConfig, VideoConfig } from "../types"
 
 import * as Intro from "./100-Intro"
@@ -19,6 +20,17 @@ const staticSequenceConfig: SequenceConfig[] = [
     component: Intro.ContentFlow.Sequence,
     durationInFrames: 24 * 30,
     audioSrc: Intro.Audio.ContentFlow,
+    timeline: [
+      { frame: 0 * 30, component: Blank },
+      { frame: 1 * 30, component: Intro.ContentFlow.Timeline.HighlightNext },
+      { frame: 2.5 * 30, component: Intro.ContentFlow.Timeline.HighlightRemix },
+      { frame: 4 * 30, component: Intro.ContentFlow.Timeline.HighlightSvelte },
+      {
+        frame: 5.5 * 30,
+        component: Intro.ContentFlow.Timeline.HighlightAstro,
+      },
+      { frame: 7 * 30, component: TBD },
+    ],
   },
   // Markdown
   {
@@ -31,7 +43,7 @@ const staticSequenceConfig: SequenceConfig[] = [
     name: "[200-200] Demo",
     component: Markdown.Demo.Sequence,
     durationInFrames: 64 * 30,
-    audioSrc: Markdown.Audio.Demo,
+    // audioSrc: Markdown.Audio.Demo,
   },
   {
     name: "[200-300] Challenges",
@@ -56,7 +68,7 @@ const staticSequenceConfig: SequenceConfig[] = [
     name: "[300-300] Demo",
     component: Contentlayer.Demo.Sequence,
     durationInFrames: 109 * 30,
-    audioSrc: Contentlayer.Audio.Demo,
+    // audioSrc: Contentlayer.Audio.Demo,
   },
   {
     name: "[300-400] Benefits",
