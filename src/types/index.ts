@@ -1,5 +1,21 @@
 import { FC } from "react"
 
+/* ----- Sequences ----- */
+
+/**
+ * Props to be passed to a timeline component. (Used below in component
+ * definition).
+ */
+export type TimelineComponentProps = Pick<
+  CurrentTimelineItem,
+  "startingFrame" | "currentFrame" | "lastFrame" | "fps"
+>
+
+/**
+ * A React timeline component, used by a sequence controller.
+ */
+export type TimelineComponent = FC<TimelineComponentProps>
+
 /* ----- Configuration ----- */
 
 /**
