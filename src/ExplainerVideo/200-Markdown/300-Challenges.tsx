@@ -1,4 +1,4 @@
-import { Video } from "remotion"
+import { interpolate, Video } from "remotion"
 import { Icon } from "../../assets"
 import { CenteredContent } from "../../components"
 import {
@@ -36,8 +36,8 @@ const NegativePoint: React.FC<{ text: string }> = ({ text }) => {
 }
 
 const SequenceBody: React.FC<
-  TimelineComponentProps & { activeIndex?: number }
-> = ({ activeIndex, ...timelineProps }) => {
+  TimelineComponentProps & { activeIndex?: number; opacity?: number }
+> = ({ activeIndex, opacity = 1, ...timelineProps }) => {
   const getOpacity = (index: number): number => {
     if (typeof activeIndex === "undefined" || index > activeIndex) return 0
     if (index < activeIndex) return 1
@@ -45,7 +45,10 @@ const SequenceBody: React.FC<
   }
 
   return (
-    <div className="bg-grayAlpha rounded-xl" style={{ maxWidth: "114rem" }}>
+    <div
+      className="bg-grayAlpha rounded-xl"
+      style={{ maxWidth: "114rem", opacity }}
+    >
       <div className="px-36 py-24 grid grid-cols-2 gap-12 gap-y-20">
         {negativePointTexts.map((text, idx) => {
           return (
@@ -62,7 +65,13 @@ const SequenceBody: React.FC<
 /* ----- Timeline Components ----- */
 
 const EmptyPoints: TimelineComponent = (props) => {
-  return <SequenceBody {...props} />
+  const opacity = interpolate(
+    props.currentFrame,
+    [props.startingFrame, props.startingFrame + props.fps * 0.25],
+    [0, 1],
+    { extrapolateRight: "clamp" }
+  )
+  return <SequenceBody {...props} opacity={opacity} />
 }
 
 const Point01: TimelineComponent = (props) => {

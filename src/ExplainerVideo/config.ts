@@ -76,37 +76,62 @@ const staticSequenceConfig: SequenceConfig[] = [
     component: Contentlayer.Title.Sequence,
     durationInFrames: 3 * 30,
     audioSrc: Contentlayer.Audio.Title,
-    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
   {
     name: "[300-200] ContentFlow",
     component: Contentlayer.ContentFlow.Sequence,
     durationInFrames: 11 * 30,
     audioSrc: Contentlayer.Audio.ContentFlow,
+    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
   {
     name: "[300-300] Demo",
     component: Contentlayer.Demo.Sequence,
-    durationInFrames: 109 * 30,
-    // audioSrc: Contentlayer.Audio.Demo,
+    durationInFrames: 104.5 * 30,
   },
   {
     name: "[300-400] Benefits",
     component: Contentlayer.Benefits.Sequence,
     durationInFrames: 28 * 30,
     audioSrc: Contentlayer.Audio.Benefits,
+    timeline: [
+      { frame: 0 * 30, component: Blank },
+      { frame: 2 * 30, component: Contentlayer.Benefits.Timeline.EmptyPoints },
+      { frame: 3.5 * 30, component: Contentlayer.Benefits.Timeline.Point01 },
+      { frame: 8 * 30, component: Contentlayer.Benefits.Timeline.Point02 },
+      { frame: 12.5 * 30, component: Contentlayer.Benefits.Timeline.Point03 },
+      { frame: 16 * 30, component: Contentlayer.Benefits.Timeline.Point04 },
+      { frame: 19.5 * 30, component: Contentlayer.Benefits.Timeline.Point05 },
+      { frame: 23.5 * 30, component: Contentlayer.Benefits.Timeline.Point06 },
+    ],
   },
   {
     name: "[300-500] Performance",
     component: Contentlayer.Performance.Sequence,
     durationInFrames: 25 * 30,
     audioSrc: Contentlayer.Audio.Performance,
+    timeline: [
+      { frame: 0 * 30, component: Blank },
+      {
+        frame: 4 * 30,
+        component: Contentlayer.Performance.Timeline.Stage00,
+      }, // show background: ;
+      { frame: 6 * 30, component: Contentlayer.Performance.Timeline.Stage01 }, // show empty table
+      { frame: 8 * 30, component: Contentlayer.Performance.Timeline.Stage02 }, // DIY CL labels
+      { frame: 10 * 30, component: Contentlayer.Performance.Timeline.Stage03 }, // add 1k label
+      { frame: 12 * 30, component: Contentlayer.Performance.Timeline.Stage04 }, // DIY v CL score
+      { frame: 14 * 30, component: Contentlayer.Performance.Timeline.Stage05 }, // gatsby label
+      { frame: 16 * 30, component: Contentlayer.Performance.Timeline.Stage06 }, // gatsby score
+      { frame: 20 * 30, component: Contentlayer.Performance.Timeline.Stage07 }, // show warm build label
+      { frame: 22 * 30, component: Contentlayer.Performance.Timeline.Stage08 }, // show warm build scores
+    ],
   },
   {
     name: "[300-600] Outro",
     component: Contentlayer.Outro.Sequence,
     durationInFrames: 25 * 30,
     audioSrc: Contentlayer.Audio.Outro,
+    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
 ]
 
