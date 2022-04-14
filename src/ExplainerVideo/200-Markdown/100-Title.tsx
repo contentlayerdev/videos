@@ -109,7 +109,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const opacity = useSequenceFade("out")
 
   return (
-    <CenteredContent style={{ opacity }}>
+    <CenteredContent style={{ opacity }} className="text-center">
       <Component
         startingFrame={startingFrame}
         currentFrame={currentFrame}

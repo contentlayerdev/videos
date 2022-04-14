@@ -4,7 +4,7 @@ export const CenteredContent: React.FC<{
 }> = ({ children, className, style }) => {
   return (
     <div
-      className={`h-full w-full flex items-center justify-center text-center ${className}`}
+      className={`h-full w-full flex items-center justify-center ${className}`}
       style={style}
     >
       {children}

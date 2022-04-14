@@ -5,7 +5,7 @@ import type { SequenceComponent } from "../../types"
 export const Timeline = {}
 
 export const Sequence: SequenceComponent = ({ timeline }) => {
-  const opacity = useSequenceFade()
+  const opacity = useSequenceFade("in")
 
   return (
     <div style={{ opacity }}>

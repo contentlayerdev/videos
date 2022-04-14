@@ -60,7 +60,15 @@ const staticSequenceConfig: SequenceConfig[] = [
     component: Markdown.Challenges.Sequence,
     durationInFrames: 30 * 30,
     audioSrc: Markdown.Audio.Challenges,
-    // timeline: [{ frame: 0 * 30, component: TBD }],
+    timeline: [
+      { frame: 0 * 30, component: Blank },
+      { frame: 7 * 30, component: Markdown.Challenges.Timeline.EmptyPoints },
+      { frame: 9 * 30, component: Markdown.Challenges.Timeline.Point01 },
+      { frame: 13 * 30, component: Markdown.Challenges.Timeline.Point02 },
+      { frame: 16 * 30, component: Markdown.Challenges.Timeline.Point03 },
+      { frame: 21 * 30, component: Markdown.Challenges.Timeline.Point04 },
+      { frame: 25 * 30, component: Markdown.Challenges.Timeline.Point05 },
+    ],
   },
   // Contentlayer
   {
@@ -68,6 +76,7 @@ const staticSequenceConfig: SequenceConfig[] = [
     component: Contentlayer.Title.Sequence,
     durationInFrames: 3 * 30,
     audioSrc: Contentlayer.Audio.Title,
+    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
   {
     name: "[300-200] ContentFlow",
