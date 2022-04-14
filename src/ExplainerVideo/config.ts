@@ -18,7 +18,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[100-200] ContentFlow",
     component: Intro.ContentFlow.Sequence,
-    durationInFrames: 24 * 30,
+    durationInFrames: 23 * 30,
     audioSrc: Intro.Audio.ContentFlow,
     timeline: [
       { frame: 0 * 30, component: Blank },
@@ -36,14 +36,26 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[200-100] Title",
     component: Markdown.Title.Sequence,
-    durationInFrames: 11 * 30,
+    durationInFrames: 12 * 30,
     audioSrc: Markdown.Audio.Title,
+    timeline: [
+      { frame: 0 * 30, component: Blank },
+      { frame: 1 * 30, component: Markdown.Title.Timeline.ShowDIY }, // DIY
+      { frame: 1.5 * 30, component: Markdown.Title.Timeline.ShowContent }, // Content
+      { frame: 2.5 * 30, component: Markdown.Title.Timeline.ShowSucks }, // Sucks
+      { frame: 3.5 * 30, component: Markdown.Title.Timeline.ShowSeriously }, // Seriously.
+      { frame: 6 * 30, component: Markdown.Title.Timeline.ShowDemoTime }, // Demo Time!
+      { frame: 8.5 * 30, component: Markdown.Title.Timeline.ShowNext }, // Next.js
+      { frame: 9 * 30, component: Markdown.Title.Timeline.ShowPlus }, // +
+      { frame: 9.25 * 30, component: Markdown.Title.Timeline.ShowMarkdown }, // Markdown
+    ],
   },
   {
     name: "[200-200] Demo",
     component: Markdown.Demo.Sequence,
     durationInFrames: 64 * 30,
     // audioSrc: Markdown.Audio.Demo,
+    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
   {
     name: "[200-300] Challenges",
