@@ -36,7 +36,7 @@ const staticSequenceConfig: SequenceConfig[] = [
   {
     name: "[200-100] Title",
     component: Markdown.Title.Sequence,
-    durationInFrames: 12 * 30,
+    durationInFrames: 11.5 * 30,
     audioSrc: Markdown.Audio.Title,
     timeline: [
       { frame: 0 * 30, component: Blank },
@@ -54,14 +54,13 @@ const staticSequenceConfig: SequenceConfig[] = [
     name: "[200-200] Demo",
     component: Markdown.Demo.Sequence,
     durationInFrames: 64 * 30,
-    // audioSrc: Markdown.Audio.Demo,
-    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
   {
     name: "[200-300] Challenges",
     component: Markdown.Challenges.Sequence,
     durationInFrames: 30 * 30,
     audioSrc: Markdown.Audio.Challenges,
+    // timeline: [{ frame: 0 * 30, component: TBD }],
   },
   // Contentlayer
   {

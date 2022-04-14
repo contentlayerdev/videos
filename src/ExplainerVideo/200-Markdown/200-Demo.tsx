@@ -1,7 +1,15 @@
+import { Video } from "remotion"
+import { useSequenceFade } from "../../hooks"
 import type { SequenceComponent } from "../../types"
 
 export const Timeline = {}
 
 export const Sequence: SequenceComponent = ({ timeline }) => {
-  return <p className="text-8xl">200-200-Demo</p>
+  const opacity = useSequenceFade()
+
+  return (
+    <div style={{ opacity }}>
+      <Video src="https://dl.dropbox.com/s/bbmmpkinzc7i40v/diy-content-demo.mp4" />
+    </div>
+  )
 }
