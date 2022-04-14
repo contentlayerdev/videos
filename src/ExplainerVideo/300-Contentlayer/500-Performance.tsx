@@ -175,8 +175,10 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
   const { Component, startingFrame, currentFrame, lastFrame, fps } =
     useTimeline(timeline)
 
+  const opacity = useSequenceFade("out")
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full" style={{ opacity }}>
       <CenteredContent className="relative z-20">
         <Component
           startingFrame={startingFrame}

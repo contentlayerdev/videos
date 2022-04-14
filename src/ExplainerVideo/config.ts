@@ -131,7 +131,36 @@ const staticSequenceConfig: SequenceConfig[] = [
     component: Contentlayer.Outro.Sequence,
     durationInFrames: 25 * 30,
     audioSrc: Contentlayer.Audio.Outro,
-    // timeline: [{ frame: 0 * 30, component: TBD }],
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: Blank,
+      },
+      {
+        frame: 2 * 30,
+        component: Contentlayer.Outro.Timeline.BlankSlate,
+      },
+      {
+        frame: 6 * 30,
+        component: Contentlayer.Outro.Timeline.ShowTutorialImage,
+      },
+      {
+        frame: 9 * 30,
+        component: Contentlayer.Outro.Timeline.ShowExamplesImage,
+      },
+      {
+        frame: 12 * 30,
+        component: Contentlayer.Outro.Timeline.ShowGettingStartedImage,
+      },
+      {
+        frame: 18 * 30,
+        component: Contentlayer.Outro.Timeline.ShowCommunityImage,
+      },
+      {
+        frame: 23 * 30,
+        component: Contentlayer.Outro.Timeline.ShowFinalScreen,
+      },
+    ],
   },
 ]
 
