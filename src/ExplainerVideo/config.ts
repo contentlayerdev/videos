@@ -26,10 +26,14 @@ const staticSequenceConfig: SequenceConfig[] = [
       { frame: 2.5 * 30, component: Intro.ContentFlow.Timeline.HighlightRemix },
       { frame: 4 * 30, component: Intro.ContentFlow.Timeline.HighlightSvelte },
       {
-        frame: 5.5 * 30,
+        frame: 5.25 * 30,
         component: Intro.ContentFlow.Timeline.HighlightAstro,
       },
-      { frame: 7 * 30, component: TBD },
+      { frame: 10 * 30, component: Blank },
+      { frame: 11 * 30, component: Intro.ContentFlow.Timeline.ShowBoxes },
+      { frame: 12 * 30, component: Intro.ContentFlow.Timeline.ShowPages },
+      { frame: 15 * 30, component: Intro.ContentFlow.Timeline.ShowContent },
+      { frame: 18 * 30, component: Intro.ContentFlow.Timeline.ShowProcessor },
     ],
   },
   // Markdown
