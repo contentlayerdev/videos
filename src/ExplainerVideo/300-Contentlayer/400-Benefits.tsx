@@ -30,7 +30,10 @@ const positivePointTexts: string[] = [
 const PositivePoint: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className="inline-flex items-start">
-      <span className="block mr-8 mt-2 text-green w-20">
+      <span
+        className="block mr-8 mt-3 text-green w-20"
+        style={{ flex: "0 0 4rem" }}
+      >
         <Icon.PositiveIcon />
       </span>
       <span className="text-5xl leading-normal block mt-2">{text}</span>
