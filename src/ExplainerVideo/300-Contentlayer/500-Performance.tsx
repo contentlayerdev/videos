@@ -1,16 +1,13 @@
 import { interpolate, Video } from "remotion"
-import { Icon } from "../../assets"
 import { CenteredContent } from "../../components"
-import {
-  useSequenceFade,
-  useTimeline,
-  useTimelineObjectFade,
-} from "../../hooks"
+import { useSequenceFade, useTimeline } from "../../hooks"
 import type {
   SequenceComponent,
   TimelineComponent,
   TimelineComponentProps,
 } from "../../types"
+
+import localVideoSrc from "../../../tmp/assets/videos/contentlayer-demo.mp4"
 
 /* ----- Shared Components ----- */
 
@@ -38,7 +35,7 @@ const TableCell: React.FC<{
 
 const SequenceBody: React.FC<
   TimelineComponentProps & { activeStage: number; opacity?: number }
-> = ({ activeStage, opacity = 1, ...timelineProps }) => {
+> = ({ activeStage, opacity = 1 }) => {
   const getOpacity = (stage: number): number => (stage <= activeStage ? 1 : 0)
 
   return (
@@ -188,10 +185,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         />
       </CenteredContent>
       <div className="absolute h-full w-full top-0 left-0 z-10">
-        <Video
-          src="https://dl.dropbox.com/s/3ivutirfok6p1w1/contentlayer-demo.mp4"
-          startFrom={4140}
-        />
+        <Video src={localVideoSrc} startFrom={4140} />
       </div>
     </div>
   )

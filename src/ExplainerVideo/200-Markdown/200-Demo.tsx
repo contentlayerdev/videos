@@ -2,6 +2,8 @@ import { Video } from "remotion"
 import { useSequenceFade } from "../../hooks"
 import type { SequenceComponent } from "../../types"
 
+import localVideoSrc from "../../../tmp/assets/videos/diy-content-demo.mp4"
+
 export const Timeline = {}
 
 export const Sequence: SequenceComponent = () => {
@@ -9,7 +11,7 @@ export const Sequence: SequenceComponent = () => {
 
   return (
     <div style={{ opacity }}>
-      <Video src="https://dl.dropbox.com/s/bbmmpkinzc7i40v/diy-content-demo.mp4" />
+      <Video src={localVideoSrc} />
     </div>
   )
 }

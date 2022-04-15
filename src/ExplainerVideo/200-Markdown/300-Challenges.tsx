@@ -12,6 +12,8 @@ import type {
   TimelineComponentProps,
 } from "../../types"
 
+import localVideoSrc from "../../../tmp/assets/videos/diy-content-demo.mp4"
+
 /* ----- Reference ----- */
 
 const negativePointTexts: string[] = [
@@ -122,10 +124,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         />
       </CenteredContent>
       <div className="absolute h-full w-full top-0 left-0 z-10">
-        <Video
-          src="https://dl.dropbox.com/s/bbmmpkinzc7i40v/diy-content-demo.mp4"
-          startFrom={2000}
-        />
+        <Video src={localVideoSrc} startFrom={2000} />
       </div>
     </div>
   )

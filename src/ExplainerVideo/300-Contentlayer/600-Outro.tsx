@@ -14,14 +14,10 @@ import {
 } from "../../types"
 
 const imageUrls = {
-  communityImage:
-    "https://dl.dropbox.com/s/nj0whfulia8q31l/300-700-community.png",
-  documentationImage:
-    "https://dl.dropbox.com/s/s5nvsvicdx36gst/300-700-documentation.png",
-  examplesImage:
-    "https://dl.dropbox.com/s/mcozma38mv0eef5/300-700-examples.png",
-  tutorialImage:
-    "https://dl.dropbox.com/s/psr23f52tlk6mhv/300-700-tutorial.png",
+  communityImage: "../../../tmp/assets/images/300-700-community.png",
+  documentationImage: "../../../tmp/assets/images/300-700-documentation.png",
+  examplesImage: "../../../tmp/assets/images/300-700-examples.png",
+  tutorialImage: "../../../tmp/assets/images/300-700-tutorial.png",
 }
 
 /* ----- Shared Components ----- */
