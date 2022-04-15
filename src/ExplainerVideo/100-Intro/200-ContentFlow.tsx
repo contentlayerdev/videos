@@ -1,7 +1,5 @@
 import { interpolate } from "remotion"
 import { Icon, Logo } from "../../assets"
-import { IconName } from "../../assets/Icon"
-import { LogoName } from "../../assets/Logo"
 import {
   useSequenceFade,
   useTimeline,

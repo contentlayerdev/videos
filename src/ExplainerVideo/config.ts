@@ -1,4 +1,4 @@
-import { Blank, TBD } from "../components"
+import { Blank } from "../components"
 import type { SequenceConfig, VideoConfig } from "../types"
 
 import * as Intro from "./100-Intro"
@@ -44,14 +44,14 @@ const staticSequenceConfig: SequenceConfig[] = [
     audioSrc: Markdown.Audio.Title,
     timeline: [
       { frame: 0 * 30, component: Blank },
-      { frame: 1 * 30, component: Markdown.Title.Timeline.ShowDIY }, // DIY
-      { frame: 1.5 * 30, component: Markdown.Title.Timeline.ShowContent }, // Content
-      { frame: 2.5 * 30, component: Markdown.Title.Timeline.ShowSucks }, // Sucks
-      { frame: 3.5 * 30, component: Markdown.Title.Timeline.ShowSeriously }, // Seriously.
-      { frame: 6 * 30, component: Markdown.Title.Timeline.ShowDemoTime }, // Demo Time!
-      { frame: 8.5 * 30, component: Markdown.Title.Timeline.ShowNext }, // Next.js
-      { frame: 9 * 30, component: Markdown.Title.Timeline.ShowPlus }, // +
-      { frame: 9.25 * 30, component: Markdown.Title.Timeline.ShowMarkdown }, // Markdown
+      { frame: 1 * 30, component: Markdown.Title.Timeline.ShowDIY },
+      { frame: 1.5 * 30, component: Markdown.Title.Timeline.ShowContent },
+      { frame: 2.5 * 30, component: Markdown.Title.Timeline.ShowSucks },
+      { frame: 3.5 * 30, component: Markdown.Title.Timeline.ShowSeriously },
+      { frame: 6 * 30, component: Markdown.Title.Timeline.ShowDemoTime },
+      { frame: 8.5 * 30, component: Markdown.Title.Timeline.ShowNext },
+      { frame: 9 * 30, component: Markdown.Title.Timeline.ShowPlus },
+      { frame: 9.25 * 30, component: Markdown.Title.Timeline.ShowMarkdown },
     ],
   },
   {
@@ -86,7 +86,28 @@ const staticSequenceConfig: SequenceConfig[] = [
     component: Contentlayer.ContentFlow.Sequence,
     durationInFrames: 11 * 30,
     audioSrc: Contentlayer.Audio.ContentFlow,
-    // timeline: [{ frame: 0 * 30, component: TBD }],
+    timeline: [
+      {
+        frame: 0 * 30,
+        component: Contentlayer.ContentFlow.Timeline.ShowBoxes,
+      },
+      {
+        frame: 2 * 30,
+        component: Contentlayer.ContentFlow.Timeline.ShowContent,
+      },
+      {
+        frame: 3 * 30,
+        component: Contentlayer.ContentFlow.Timeline.ShowPages,
+      },
+      {
+        frame: 4 * 30,
+        component: Contentlayer.ContentFlow.Timeline.ShowProcessor,
+      },
+      {
+        frame: 6 * 30,
+        component: Contentlayer.ContentFlow.Timeline.ReplaceQuestion,
+      },
+    ],
   },
   {
     name: "[300-300] Demo",
