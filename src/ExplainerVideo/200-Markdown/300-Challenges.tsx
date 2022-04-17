@@ -124,7 +124,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         />
       </CenteredContent>
       <div className="absolute h-full w-full top-0 left-0 z-10">
-        <Video src={localVideoSrc} startFrom={2000} />
+        <Video src={localVideoSrc} startFrom={1950} />
       </div>
     </div>
   )

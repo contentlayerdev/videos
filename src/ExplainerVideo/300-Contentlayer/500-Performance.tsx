@@ -185,7 +185,7 @@ export const Sequence: SequenceComponent = ({ timeline }) => {
         />
       </CenteredContent>
       <div className="absolute h-full w-full top-0 left-0 z-10">
-        <Video src={localVideoSrc} startFrom={4140} />
+        <Video src={localVideoSrc} startFrom={4344} />
       </div>
     </div>
   )
